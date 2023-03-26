@@ -1169,7 +1169,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ffff1c;
+  background: #99c4ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1963,6 +1963,16 @@ pre .javascript .function {
 #qr p {
   text-align: center;
 }
+#设置博文的相关链接为蓝色,
+.post-body p a {
+  color: #0593d3;
+  border-bottom: none;
+}
+#设置博文的相关链接为蓝色:hover,
+.post-body p a:hover {
+  color: #0477ab;
+  text-decoration: underline;
+}
 .category-all-page .category-all-title {
   text-align: center;
 }
@@ -2439,11 +2449,46 @@ ul.breadcrumb li + li:last-child {
 }
 .links-of-blogroll-item {
   padding: 0;
+  display: inline-block;
+  margin: 5px 0 0;
+  width: unset;
+}
+.links-of-blogroll-item a,
+.links-of-blogroll-item span.exturl {
+  box-sizing: border-box;
+  display: inline-block;
+  margin-bottom: 0;
+  margin-right: 0;
+  max-width: 216px;
+  overflow: hidden;
+  padding: 0 5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 body {
-  background: url("images/background.png");
+  background: url("/images/background.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
+}
+.post-block {
+  opacity: 0.7;
+}
+.sidebar {
+  background-color: transparent;
+  opacity: 0.7;
+}
+.header-inner {
+  background: rgba(255,255,255,0.7);
+}
+.popup {
+  opacity: 0.7;
+}
+.post {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 25px;
+  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
+  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
 }
