@@ -14,22 +14,24 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
   <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
   <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="No pain No game">
 <meta property="og:type" content="website">
-<meta property="og:title" content="TAG House">
+<meta property="og:title" content="TAG Park">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="TAG House">
+<meta property="og:site_name" content="TAG Park">
 <meta property="og:description" content="No pain No game">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="fhgg888">
+<meta property="article:tag" content="思考，游戏技巧，深度学习，个人理解，C，C#，python，matlab，OpenCV，嵌入式">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://example.com/">
@@ -45,7 +47,7 @@
   };
 </script>
 
-  <title>TAG House</title>
+  <title>TAG Park</title>
   
 
 
@@ -76,12 +78,13 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="TAG Park" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
     <div class="headband"></div>
-
+           
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
@@ -96,13 +99,15 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">TAG House</h1>
+      <h1 class="site-title">TAG Park</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
+      <p class="site-subtitle" itemprop="description">分享自己觉得好玩的技术和有趣的游戏理解</p>
   </div>
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -142,11 +147,48 @@
     <a href="/resources/" rel="section"><i class="fa fa-download fa-fw"></i>资源</a>
 
   </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -156,6 +198,8 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+
+  <a href="https://github.com/fhgg888" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
 
 
     <main class="main">
@@ -169,6 +213,155 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/30/MakedownPad%E4%BD%BF%E7%94%A8%E5%B8%AE%E5%8A%A9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="fhgg888">
+      <meta itemprop="description" content="No pain No game">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TAG Park">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/30/MakedownPad%E4%BD%BF%E7%94%A8%E5%B8%AE%E5%8A%A9/" class="post-title-link" itemprop="url">MarkdownPad 使用教程</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-30 21:01:34 / 修改时间：21:02:53" itemprop="dateCreated datePublished" datetime="2023-03-30T21:01:34+08:00">2023-03-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.5k</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li>标题</li>
+<li>列表</li>
+<li>引用</li>
+<li>图片和超链接</li>
+<li>粗体与斜体</li>
+<li>代码框</li>
+<li>转义字符</li>
+<li>其他快捷键</li>
+<li>最后</li>
+</ol>
+<h3 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h3><p>标题的设置很简单，有三种添加方式：①手动添加；②快捷键添加；③选项卡添加，下面分别对这三种方式进行介绍。</p>
+<p>Ⅰ. 手动添加</p>
+<p>一级标题对应的是#一级标题#，二级标题对应##二级标题##，以此类推。</p>
+<p>Ⅱ. 快捷键添加</p>
+<p>直接在键盘上输入ctrl+num就能得到对应标题的级数</p>
+<p>Ⅲ. 选项卡设置</p>
+<p>在菜单栏中选择插入选项卡，找到需要插入的<strong>标题</strong>,添加即可。</p>
+<h3 id="2-列表"><a href="#2-列表" class="headerlink" title="2.列表"></a>2.列表</h3><p>2.1 有序列表<br>有序列表，就是对输入的内容按序号进行标识排列。有三种添加方式：</p>
+<ol>
+<li>手动添加</li>
+<li>快捷键添加</li>
+<li>选项卡添加</li>
+</ol>
+<p>①手动添加<br>在输入的内容前，添加num. + 空格 ，接着按 回车 ，即可添加 num+1 条内容。<br>注意：1）这里的 num 是指排列的序号，一般第一行内容，num-&gt;1 ，如果 num 设置成其他数值，则依然从 1 开始计数；2）num.的后边务必加空格 ，否则添加列表无效。</p>
+<p>②快捷键添加<br>直接在键盘上输入Ctrl+Shift+O，输入第一条内容后，按 回车 ，即可添加第二条内容。注意快捷键输入的是 字母O ，而不是 数字0。</p>
+<p>③选项卡添加<br>在菜单栏中选择 插入 选项卡，找到 有序列表 ，添加即可，或者在标题栏中，直接点击 添加有序列表的按钮。</p>
+<p>2.2 无序列表<br>无序列表，顾名思义，即输入的内容不按序号进行排列。有三种添加方式：①手动添加；②快捷键添加；③选项卡添加，下面分别对这三种方式进行介绍。</p>
+<p>①手动添加<br>在输入的内容前，添加-&#x2F;* + 空格 ，接着按 回车 ，即可添加下一条内容。</p>
+<p>注意：1）这里的-&#x2F;* 是指-或<em>；2）-&#x2F;</em> 的后边务必加 空格 ，否则添加列表无效。</p>
+<p>②快捷键添加<br>直接在键盘上输入Ctrl+U，输入第一条内容后，按 回车 ，即可添加第二条内容。</p>
+<p>③选项卡添加<br>在菜单栏中选择 插入 选项卡，找到 无序列表 ，添加即可，或者在标题栏中，直接点击 添加的无序列表按钮。</p>
+<h3 id="3-引用"><a href="#3-引用" class="headerlink" title="3.引用"></a>3.引用</h3><p>引用可以将一段文字进行单独的标识，撇如下面这个例子。</p>
+<p>引用有三种添加方式：</p>
+<p>Ⅰ. 手动添加：在需要标注引用的内容之前输入&gt;,可以将对应的内容标记为引用类型。</p>
+<p>Ⅱ. 快捷键添加：直接在键盘上输入Ctrl+Q。</p>
+<p>Ⅲ. 选项卡添加：在菜单栏中选择<strong>插入（insert）</strong>选项卡。</p>
+<h3 id="4-图片和超链接"><a href="#4-图片和超链接" class="headerlink" title="4.图片和超链接"></a>4.图片和超链接</h3><p>4.1 图片</p>
+<p>有时我们需要将网上的图片或者电脑上的图片，添加到md文件中进行展示，所以这时候我们就需要用到插入图片的语法。</p>
+<p>在键盘中输入![图片名称]（链接名称）可以显示对应的图片。</p>
+<p>但是如果输入的是</p>
+<blockquote>
+<p>[图片名称]（链接名称）</p>
+</blockquote>
+<p>就会显示的是对应的链接入口</p>
+<h3 id="5-粗体和斜体"><a href="#5-粗体和斜体" class="headerlink" title="5.粗体和斜体"></a>5.粗体和斜体</h3><p>5.1 粗体</p>
+<p>粗体的添加有三种方式:</p>
+<ol>
+<li>手动添加: 在需要加粗的文字或段落前加上**,然后语句后面也加上上述的符号.</li>
+<li>快捷键添加:ctrl+B</li>
+<li>选项卡添加: bold的选项可以插入粗体结构.</li>
+</ol>
+<p>5.2斜体</p>
+<p>斜体的添加方式也是有三种:</p>
+<p>添加方式与粗体类似</p>
+<ol>
+<li>手动添加: 不同于粗体的结构,斜体需要的是利用单个*号把想把改变的语句包围住.</li>
+<li>快捷键添加: CTRL + I</li>
+<li>选项卡设置: 找到 italic点击插入斜体结构.</li>
+</ol>
+<h3 id="6-代码"><a href="#6-代码" class="headerlink" title="6.代码"></a>6.代码</h3><p>6.1 代码行</p>
+<p>输入一行代码,在代码前后添加&#96;,同时要注意是在英文输入法中添加,输入快捷键ctrl+K也可以对其进行添加.下面举例:</p>
+<p><code>printf(&#39;hello world&#39;);</code></p>
+<pre><code>hello world
+</code></pre>
+<p>6.2 代码块:</p>
+<p>添加代码块网上给出了很多方法.有一种比较简单的方法.选中需要标记的代码段,按住ctrl + k键即可:</p>
+<h3 id="7-转义字符"><a href="#7-转义字符" class="headerlink" title="7.转义字符"></a>7.转义字符</h3><p>这个和C语言的转义字符类似,在需要添加的特殊字符前添加\即可.</p>
+<h3 id="8-其他快捷键"><a href="#8-其他快捷键" class="headerlink" title="8.其他快捷键"></a>8.其他快捷键</h3><p>8.1添加时间戳<br>键盘输入ctrl+T,即可从系统中获取时间,例如:3&#x2F;30&#x2F;2023 8:57:50 PM </p>
+<p>8.2添加分割线<br>键盘输入ctrl+R,即可添加水平标尺.</p>
+<hr>
+
+      
+    </div>
+
+    
+    
+    
+<div>
+  
+</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/26/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -178,7 +371,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TAG House">
+      <meta itemprop="name" content="TAG Park">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -187,6 +380,7 @@
         </h2>
 
         <div class="post-meta">
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
@@ -195,8 +389,22 @@
 
               <time title="创建时间：2023-03-26 19:13:00" itemprop="dateCreated datePublished" datetime="2023-03-26T19:13:00+08:00">2023-03-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-30 19:32:19" itemprop="dateModified" datetime="2023-03-30T19:32:19+08:00">2023-03-30</time>
+              </span>
 
-          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>311</span>
+            </span>
 
         </div>
       </header>
@@ -211,24 +419,24 @@
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/03/26/hello-world/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
     
     
     
-
-    
+<div>
+  
+</div>
       <footer class="post-footer">
         <div class="post-eof"></div>
       </footer>
@@ -276,6 +484,8 @@
     <span class="toggle-line toggle-line-last"></span>
   </div>
 
+
+
   <aside class="sidebar">
     <div class="sidebar-inner">
 
@@ -293,6 +503,10 @@
       </div>
       <!--/noindex-->
 
+  <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=543986947&auto=1&height=66"></iframe>
+  </div>
+
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="fhgg888"
@@ -305,9 +519,21 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -341,8 +567,10 @@
       </div>
 
     </div>
+
   </aside>
   <div id="sidebar-dimmer"></div>
+
 
 
       </div>
@@ -362,67 +590,17 @@
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">fhgg888</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
-  </div>
+</div><script color="0,0,255" opacity="0.7" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共75字</span>
+  <span class="post-count">博客全站共1.3k字</span>
 </div>
 
 //访问量统计设定
 
-    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-    <span class="post-meta-divider">|</span>
-    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
-    <span class="post-meta-divider">|</span>
-<!-- 不蒜子计数初始值纠正 -->
-<script>
-$(document).ready(function() {
-
-    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
-    var countOffset = 20000;  // 初始化首次数据
-
-    function fixCount() {            
-       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
-        {
-            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
-            clearInterval(int);
-        }                  
-        if ($("#busuanzi_container_site_pv").css("display") != "none")
-        {
-            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
-            clearInterval(int); // 停止检测
-        }  
-    }
-       	
-});
-</script> 
-
         
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
 
 
 
@@ -436,8 +614,9 @@ $(document).ready(function() {
   </div>
 
   
-  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -453,6 +632,7 @@ $(document).ready(function() {
 
 
   <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
 
 
   
@@ -460,6 +640,10 @@ $(document).ready(function() {
 
 
 
+  
+<script src="/js/local-search.js"></script>
+
+
 
 
 
@@ -475,6 +659,15 @@ $(document).ready(function() {
 
   
 
+  
 
-</body>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":1}});</script></body>
+
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+
+
 </html>
+

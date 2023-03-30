@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>MarkdownPad 使用教程</title>
+    <url>/2023/03/30/MakedownPad%E4%BD%BF%E7%94%A8%E5%B8%AE%E5%8A%A9/</url>
+    <content><![CDATA[<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li>标题</li>
+<li>列表</li>
+<li>引用</li>
+<li>图片和超链接</li>
+<li>粗体与斜体</li>
+<li>代码框</li>
+<li>转义字符</li>
+<li>其他快捷键</li>
+<li>最后</li>
+</ol>
+<h3 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h3><p>标题的设置很简单，有三种添加方式：①手动添加；②快捷键添加；③选项卡添加，下面分别对这三种方式进行介绍。</p>
+<p>Ⅰ. 手动添加</p>
+<p>一级标题对应的是#一级标题#，二级标题对应##二级标题##，以此类推。</p>
+<p>Ⅱ. 快捷键添加</p>
+<p>直接在键盘上输入ctrl+num就能得到对应标题的级数</p>
+<p>Ⅲ. 选项卡设置</p>
+<p>在菜单栏中选择插入选项卡，找到需要插入的<strong>标题</strong>,添加即可。</p>
+<h3 id="2-列表"><a href="#2-列表" class="headerlink" title="2.列表"></a>2.列表</h3><p>2.1 有序列表<br>有序列表，就是对输入的内容按序号进行标识排列。有三种添加方式：</p>
+<ol>
+<li>手动添加</li>
+<li>快捷键添加</li>
+<li>选项卡添加</li>
+</ol>
+<p>①手动添加<br>在输入的内容前，添加num. + 空格 ，接着按 回车 ，即可添加 num+1 条内容。<br>注意：1）这里的 num 是指排列的序号，一般第一行内容，num-&gt;1 ，如果 num 设置成其他数值，则依然从 1 开始计数；2）num.的后边务必加空格 ，否则添加列表无效。</p>
+<p>②快捷键添加<br>直接在键盘上输入Ctrl+Shift+O，输入第一条内容后，按 回车 ，即可添加第二条内容。注意快捷键输入的是 字母O ，而不是 数字0。</p>
+<p>③选项卡添加<br>在菜单栏中选择 插入 选项卡，找到 有序列表 ，添加即可，或者在标题栏中，直接点击 添加有序列表的按钮。</p>
+<p>2.2 无序列表<br>无序列表，顾名思义，即输入的内容不按序号进行排列。有三种添加方式：①手动添加；②快捷键添加；③选项卡添加，下面分别对这三种方式进行介绍。</p>
+<p>①手动添加<br>在输入的内容前，添加-&#x2F;* + 空格 ，接着按 回车 ，即可添加下一条内容。</p>
+<p>注意：1）这里的-&#x2F;* 是指-或<em>；2）-&#x2F;</em> 的后边务必加 空格 ，否则添加列表无效。</p>
+<p>②快捷键添加<br>直接在键盘上输入Ctrl+U，输入第一条内容后，按 回车 ，即可添加第二条内容。</p>
+<p>③选项卡添加<br>在菜单栏中选择 插入 选项卡，找到 无序列表 ，添加即可，或者在标题栏中，直接点击 添加的无序列表按钮。</p>
+<h3 id="3-引用"><a href="#3-引用" class="headerlink" title="3.引用"></a>3.引用</h3><p>引用可以将一段文字进行单独的标识，撇如下面这个例子。</p>
+<p>引用有三种添加方式：</p>
+<p>Ⅰ. 手动添加：在需要标注引用的内容之前输入&gt;,可以将对应的内容标记为引用类型。</p>
+<p>Ⅱ. 快捷键添加：直接在键盘上输入Ctrl+Q。</p>
+<p>Ⅲ. 选项卡添加：在菜单栏中选择<strong>插入（insert）</strong>选项卡。</p>
+<h3 id="4-图片和超链接"><a href="#4-图片和超链接" class="headerlink" title="4.图片和超链接"></a>4.图片和超链接</h3><p>4.1 图片</p>
+<p>有时我们需要将网上的图片或者电脑上的图片，添加到md文件中进行展示，所以这时候我们就需要用到插入图片的语法。</p>
+<p>在键盘中输入![图片名称]（链接名称）可以显示对应的图片。</p>
+<p>但是如果输入的是</p>
+<blockquote>
+<p>[图片名称]（链接名称）</p>
+</blockquote>
+<p>就会显示的是对应的链接入口</p>
+<h3 id="5-粗体和斜体"><a href="#5-粗体和斜体" class="headerlink" title="5.粗体和斜体"></a>5.粗体和斜体</h3><p>5.1 粗体</p>
+<p>粗体的添加有三种方式:</p>
+<ol>
+<li>手动添加: 在需要加粗的文字或段落前加上**,然后语句后面也加上上述的符号.</li>
+<li>快捷键添加:ctrl+B</li>
+<li>选项卡添加: bold的选项可以插入粗体结构.</li>
+</ol>
+<p>5.2斜体</p>
+<p>斜体的添加方式也是有三种:</p>
+<p>添加方式与粗体类似</p>
+<ol>
+<li>手动添加: 不同于粗体的结构,斜体需要的是利用单个*号把想把改变的语句包围住.</li>
+<li>快捷键添加: CTRL + I</li>
+<li>选项卡设置: 找到 italic点击插入斜体结构.</li>
+</ol>
+<h3 id="6-代码"><a href="#6-代码" class="headerlink" title="6.代码"></a>6.代码</h3><p>6.1 代码行</p>
+<p>输入一行代码,在代码前后添加&#96;,同时要注意是在英文输入法中添加,输入快捷键ctrl+K也可以对其进行添加.下面举例:</p>
+<p><code>printf(&#39;hello world&#39;);</code></p>
+<pre><code>hello world
+</code></pre>
+<p>6.2 代码块:</p>
+<p>添加代码块网上给出了很多方法.有一种比较简单的方法.选中需要标记的代码段,按住ctrl + k键即可:</p>
+<h3 id="7-转义字符"><a href="#7-转义字符" class="headerlink" title="7.转义字符"></a>7.转义字符</h3><p>这个和C语言的转义字符类似,在需要添加的特殊字符前添加\即可.</p>
+<h3 id="8-其他快捷键"><a href="#8-其他快捷键" class="headerlink" title="8.其他快捷键"></a>8.其他快捷键</h3><p>8.1添加时间戳<br>键盘输入ctrl+T,即可从系统中获取时间,例如:3&#x2F;30&#x2F;2023 8:57:50 PM </p>
+<p>8.2添加分割线<br>键盘输入ctrl+R,即可添加水平标尺.</p>
+<hr>
+]]></content>
+      <categories>
+        <category>note</category>
+      </categories>
+      <tags>
+        <tag>MarkdownPad</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2023/03/26/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><span id="more"></span>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a><br>comment: true</p>
+]]></content>
+  </entry>
+</search>
