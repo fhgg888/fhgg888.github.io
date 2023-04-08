@@ -23,31 +23,36 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="No pain No game">
-<meta property="og:type" content="website">
-<meta property="og:title" content="TAG Park">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="基于mediaPipe和OpenCV手势识别 手部追踪模块(HandTrackingModule.py)：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于mediaPipe和OpenCV手势识别">
+<meta property="og:url" content="http://example.com/2023/04/08/OpenCV%E6%89%8B%E5%8A%BF%E8%AF%86%E5%88%AB/index.html">
 <meta property="og:site_name" content="TAG Park">
-<meta property="og:description" content="No pain No game">
+<meta property="og:description" content="基于mediaPipe和OpenCV手势识别 手部追踪模块(HandTrackingModule.py)：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2023/04/08/ppHPhmn.jpg">
+<meta property="article:published_time" content="2023-04-08T11:14:31.000Z">
+<meta property="article:modified_time" content="2023-04-08T12:02:16.525Z">
 <meta property="article:author" content="fhgg888">
-<meta property="article:tag" content="思考，游戏技巧，深度学习，个人理解，C，C#，python，matlab，OpenCV，嵌入式">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="OpenCV">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2023/04/08/ppHPhmn.jpg">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2023/04/08/OpenCV%E6%89%8B%E5%8A%BF%E8%AF%86%E5%88%AB/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>TAG Park</title>
+  <title>基于mediaPipe和OpenCV手势识别 | TAG Park</title>
   
 
 
@@ -216,9 +221,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -234,10 +240,9 @@
       <meta itemprop="name" content="TAG Park">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/04/08/OpenCV%E6%89%8B%E5%8A%BF%E8%AF%86%E5%88%AB/" class="post-title-link" itemprop="url">基于mediaPipe和OpenCV手势识别</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          基于mediaPipe和OpenCV手势识别
+        </h1>
 
         <div class="post-meta">
           
@@ -264,7 +269,14 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -282,17 +294,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="基于mediaPipe和OpenCV手势识别"><a href="#基于mediaPipe和OpenCV手势识别" class="headerlink" title="基于mediaPipe和OpenCV手势识别"></a>基于mediaPipe和OpenCV手势识别</h1><p><img src="https://s1.ax1x.com/2023/04/08/ppHPhmn.jpg" alt=""></p>
+        <h1 id="基于mediaPipe和OpenCV手势识别"><a href="#基于mediaPipe和OpenCV手势识别" class="headerlink" title="基于mediaPipe和OpenCV手势识别"></a>基于mediaPipe和OpenCV手势识别</h1><p><img src="https://s1.ax1x.com/2023/04/08/ppHPhmn.jpg" alt=""></p>
 <h2 id="手部追踪模块-HandTrackingModule-py-："><a href="#手部追踪模块-HandTrackingModule-py-：" class="headerlink" title="手部追踪模块(HandTrackingModule.py)："></a>手部追踪模块(HandTrackingModule.py)：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">import cv2</span><br><span class="line">import mediapipe as mp</span><br><span class="line"></span><br><span class="line">class HandDetector:</span><br><span class="line">    <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">    使用mediapipe库查找手。导出地标像素格式。添加了额外的功能。</span></span><br><span class="line"><span class="string">    如查找方式，许多手指向上或两个手指之间的距离。而且提供找到的手的边界框信息。</span></span><br><span class="line"><span class="string">    &quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">    def __init__(self, mode=False, maxHands=2, detectionCon=0.5, minTrackCon = 0.5):</span><br><span class="line">        <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">        :param mode: 在静态模式下，对每个图像进行检测</span></span><br><span class="line"><span class="string">        :param maxHands: 要检测的最大手数</span></span><br><span class="line"><span class="string">        :param detectionCon: 最小检测置信度</span></span><br><span class="line"><span class="string">        :param minTrackCon: 最小跟踪置信度</span></span><br><span class="line"><span class="string">        &quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">        self.mode = mode</span><br><span class="line">        self.maxHands = maxHands</span><br><span class="line">        self.modelComplex = False</span><br><span class="line">        self.detectionCon = detectionCon</span><br><span class="line">        self.minTrackCon = minTrackCon</span><br><span class="line"></span><br><span class="line">		<span class="comment"># 初始化手部识别模型</span></span><br><span class="line">        self.mpHands = mp.solutions.hands</span><br><span class="line">        self.hands = self.mpHands.Hands(self.mode, self.maxHands, self.modelComplex,</span><br><span class="line">                                        self.detectionCon, self.minTrackCon)</span><br><span class="line">        self.mpDraw = mp.solutions.drawing_utils	<span class="comment"># 初始化绘图器</span></span><br><span class="line">        self.tipIds = [4, 8, 12, 16, 20]			<span class="comment"># 指尖列表</span></span><br><span class="line">        self.fingers = []</span><br><span class="line">        self.lmList = []</span><br><span class="line"></span><br><span class="line">    def findHands(self, img, draw=True):</span><br><span class="line">        <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">        从图像(BRG)中找到手部。</span></span><br><span class="line"><span class="string">        :param img: 用于查找手的图像。</span></span><br><span class="line"><span class="string">        :param draw: 在图像上绘制输出的标志。</span></span><br><span class="line"><span class="string">        :return: 带或不带图形的图像</span></span><br><span class="line"><span class="string">        &quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">        imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) <span class="comment"># 将传入的图像由BGR模式转标准的Opencv模式——RGB模式，</span></span><br><span class="line">        self.results = self.hands.process(imgRGB)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> self.results.multi_hand_landmarks:</span><br><span class="line">            <span class="keyword">for</span> handLms <span class="keyword">in</span> self.results.multi_hand_landmarks:</span><br><span class="line">                <span class="keyword">if</span> draw:</span><br><span class="line">                    self.mpDraw.draw_landmarks(img, handLms,</span><br><span class="line">                                               self.mpHands.HAND_CONNECTIONS)</span><br><span class="line">        <span class="built_in">return</span> img</span><br><span class="line"></span><br><span class="line">    def findPosition(self, img, handNo=0, draw=True):</span><br><span class="line">        <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">        查找单手的地标并将其放入列表中像素格式。还可以返回手部周围的边界框。</span></span><br><span class="line"><span class="string">        :param img: 要查找的主图像</span></span><br><span class="line"><span class="string">        :param handNo: 如果检测到多只手，则为手部id</span></span><br><span class="line"><span class="string">        :param draw: 在图像上绘制输出的标志。(默认绘制矩形框)</span></span><br><span class="line"><span class="string">        :return: 像素格式的手部关节位置列表；手部边界框</span></span><br><span class="line"><span class="string">        &quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">        xList = []</span><br><span class="line">        yList = []</span><br><span class="line">        bbox = []</span><br><span class="line">        bboxInfo =[]</span><br><span class="line">        self.lmList = []</span><br><span class="line">        <span class="keyword">if</span> self.results.multi_hand_landmarks:</span><br><span class="line">            myHand = self.results.multi_hand_landmarks[handNo]</span><br><span class="line">            <span class="keyword">for</span> <span class="built_in">id</span>, lm <span class="keyword">in</span> enumerate(myHand.landmark):</span><br><span class="line">                h, w, c = img.shape</span><br><span class="line">                px, py = int(lm.x * w), int(lm.y * h)</span><br><span class="line">                xList.append(px)</span><br><span class="line">                yList.append(py)</span><br><span class="line">                self.lmList.append([px, py])</span><br><span class="line">                <span class="keyword">if</span> draw:</span><br><span class="line">                    cv2.circle(img, (px, py), 5, (255, 0, 255), cv2.FILLED)</span><br><span class="line">            xmin, xmax = min(xList), max(xList)</span><br><span class="line">            ymin, ymax = min(yList), max(yList)</span><br><span class="line">            boxW, boxH = xmax - xmin, ymax - ymin</span><br><span class="line">            bbox = xmin, ymin, boxW, boxH</span><br><span class="line">            cx, cy = bbox[0] + (bbox[2] // 2), \</span><br><span class="line">                     bbox[1] + (bbox[3] // 2)</span><br><span class="line">            bboxInfo = &#123;<span class="string">&quot;id&quot;</span>: <span class="built_in">id</span>, <span class="string">&quot;bbox&quot;</span>: bbox,<span class="string">&quot;center&quot;</span>: (cx, cy)&#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> draw:</span><br><span class="line">                cv2.rectangle(img, (bbox[0] - 20, bbox[1] - 20),</span><br><span class="line">                              (bbox[0] + bbox[2] + 20, bbox[1] + bbox[3] + 20),</span><br><span class="line">                              (0, 255, 0), 2)</span><br><span class="line"></span><br><span class="line">        <span class="built_in">return</span> self.lmList, bboxInfo</span><br><span class="line"></span><br><span class="line">    def fingersUp(self):</span><br><span class="line">        <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">        查找列表中打开并返回的手指数。会分别考虑左手和右手</span></span><br><span class="line"><span class="string">        ：return：竖起手指的列表</span></span><br><span class="line"><span class="string">        &quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> self.results.multi_hand_landmarks:</span><br><span class="line">            myHandType = self.handType()</span><br><span class="line">            fingers = []</span><br><span class="line">            <span class="comment"># Thumb</span></span><br><span class="line">            <span class="keyword">if</span> myHandType == <span class="string">&quot;Right&quot;</span>:</span><br><span class="line">                <span class="keyword">if</span> self.lmList[self.tipIds[0]][0] &gt; self.lmList[self.tipIds[0] - 1][0]:</span><br><span class="line">                    fingers.append(1)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    fingers.append(0)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> self.lmList[self.tipIds[0]][0] &lt; self.lmList[self.tipIds[0] - 1][0]:</span><br><span class="line">                    fingers.append(1)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    fingers.append(0)</span><br><span class="line">            <span class="comment"># 4 Fingers</span></span><br><span class="line">            <span class="keyword">for</span> <span class="built_in">id</span> <span class="keyword">in</span> range(1, 5):</span><br><span class="line">                <span class="keyword">if</span> self.lmList[self.tipIds[<span class="built_in">id</span>]][1] &lt; self.lmList[self.tipIds[<span class="built_in">id</span>] - 2][1]:</span><br><span class="line">                    fingers.append(1)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    fingers.append(0)</span><br><span class="line">        <span class="built_in">return</span> fingers</span><br><span class="line"></span><br><span class="line">    def handType(self):</span><br><span class="line">        <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">        检查传入的手部是左还是右</span></span><br><span class="line"><span class="string">        ：return: &quot;</span>Right<span class="string">&quot; 或 &quot;</span>Left<span class="string">&quot;</span></span><br><span class="line"><span class="string">        &quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> self.results.multi_hand_landmarks:</span><br><span class="line">            <span class="keyword">if</span> self.lmList[17][0] &lt; self.lmList[5][0]:</span><br><span class="line">                <span class="built_in">return</span> <span class="string">&quot;Right&quot;</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="built_in">return</span> <span class="string">&quot;Left&quot;</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/04/08/OpenCV%E6%89%8B%E5%8A%BF%E8%AF%86%E5%88%AB/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
+<span id="more"></span>
+<h2 id="主函数main-py"><a href="#主函数main-py" class="headerlink" title="主函数main.py"></a>主函数main.py</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line">import cv2</span><br><span class="line">from HandTrackingModule import HandDetector</span><br><span class="line">from PIL import Image,ImageDraw,ImageFont</span><br><span class="line">import numpy</span><br><span class="line"></span><br><span class="line"><span class="comment">#解决中文出现乱码问题</span></span><br><span class="line">def cv2ImgAddText(img, text, left, top, textColor=(0, 255, 0), textSize=20):</span><br><span class="line">    <span class="keyword">if</span> (isinstance(img, numpy.ndarray)):  <span class="comment"># 判断是否OpenCV图片类型</span></span><br><span class="line">        img = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))</span><br><span class="line">    <span class="comment"># 创建一个可以在给定图像上绘图的对象</span></span><br><span class="line">    draw = ImageDraw.Draw(img)</span><br><span class="line">    <span class="comment"># 字体的格式</span></span><br><span class="line">    fontStyle = ImageFont.truetype(</span><br><span class="line">        <span class="string">&quot;font/simsun.ttc&quot;</span>, textSize, encoding=<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">    <span class="comment"># 绘制文本</span></span><br><span class="line">    draw.text((left, top), text, textColor, font=fontStyle)</span><br><span class="line">    # 转换回OpenCV格式</span><br><span class="line">    return cv2.cvtColor(numpy.asarray(img), cv2.COLOR_RGB2BGR)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Main:</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.camera = cv2.VideoCapture(<span class="number">0</span>,cv2.CAP_DSHOW)</span><br><span class="line">        self.camera.set(<span class="number">3</span>, <span class="number">1280</span>)</span><br><span class="line">        self.camera.set(<span class="number">4</span>, <span class="number">720</span>)</span><br><span class="line"></span><br><span class="line">    def Gesture_recognition(self):</span><br><span class="line">        while True:</span><br><span class="line">            self.detector = HandDetector()</span><br><span class="line">            frame, img = self.camera.read()</span><br><span class="line">            img = self.detector.findHands(img)</span><br><span class="line">            lmList, bbox = self.detector.findPosition(img)</span><br><span class="line"></span><br><span class="line">            if lmList:</span><br><span class="line">                x_1, y_1 = bbox[&quot;bbox&quot;][<span class="number">0</span>], bbox[&quot;bbox&quot;][<span class="number">1</span>]</span><br><span class="line">                x1, x2, x3, x4, x5 = self.detector.fingersUp()</span><br><span class="line"></span><br><span class="line">                if (x2 == <span class="number">1</span> and x3 == <span class="number">1</span>) and (x4 == <span class="number">0</span> and x5 == <span class="number">0</span> and x1 == <span class="number">0</span>):</span><br><span class="line">                    cv2.putText(img, &quot;<span class="number">2</span>_TWO&quot;, (x_1, y_1), cv2.FONT_HERSHEY_PLAIN, <span class="number">3</span>,</span><br><span class="line">                                (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">3</span>)</span><br><span class="line">                elif (x2 == <span class="number">1</span> and x3 == <span class="number">1</span> and x4 == <span class="number">1</span>) and (x1 == <span class="number">0</span> and x5 == <span class="number">0</span>):</span><br><span class="line">                    cv2.putText(img, &quot;<span class="number">3</span>_THREE&quot;, (x_1, y_1), cv2.FONT_HERSHEY_PLAIN, <span class="number">3</span>,</span><br><span class="line">                                (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">3</span>)</span><br><span class="line">                elif (x2 == <span class="number">1</span> and x3 == <span class="number">1</span> and x4 == <span class="number">1</span> and x5 == <span class="number">1</span>) and (x1 == <span class="number">0</span>):</span><br><span class="line">                    cv2.putText(img, &quot;<span class="number">4</span>_FOUR&quot;, (x_1, y_1), cv2.FONT_HERSHEY_PLAIN, <span class="number">3</span>,</span><br><span class="line">                                (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">3</span>)</span><br><span class="line">                elif x1 == <span class="number">1</span> and x2 == <span class="number">1</span> and x3 == <span class="number">1</span> and x4 == <span class="number">1</span> and x5 == <span class="number">1</span>:</span><br><span class="line">                    cv2.putText(img, &quot;<span class="number">5</span>_FIVE&quot;, (x_1, y_1), cv2.FONT_HERSHEY_PLAIN, <span class="number">3</span>,</span><br><span class="line">                                (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">3</span>)</span><br><span class="line">                elif x2 == <span class="number">1</span> and (x1 == <span class="number">0</span>, x3 == <span class="number">0</span>, x4 == <span class="number">0</span>, x5 == <span class="number">0</span>):</span><br><span class="line">                    cv2.putText(img, &quot;<span class="number">1</span>_ONE&quot;, (x_1, y_1), cv2.FONT_HERSHEY_PLAIN, <span class="number">3</span>,</span><br><span class="line">                                (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">3</span>)</span><br><span class="line">                elif x1 == <span class="number">1</span> and (x2 == <span class="number">0</span>, x3 == <span class="number">0</span>, x4 == <span class="number">0</span>, x5 == <span class="number">0</span>):</span><br><span class="line">                    img = cv2ImgAddText(img,&#x27;杰哥觉得很赞&#x27;,left = x_1,top=y_1,textColor=(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>),textSize = <span class="number">45</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            cv2.imshow(&quot;camera&quot;, img)</span><br><span class="line">            #if cv2.getWindowProperty(&#x27;camera&#x27;, cv2.WND_PROP_VISIBLE) &lt; <span class="number">1</span>:</span><br><span class="line">            #    break</span><br><span class="line">            cv2.waitKey(<span class="number">1</span>)</span><br><span class="line">            if cv2.waitKey(<span class="number">1</span>) &amp; <span class="number">0</span>xFF == ord(&quot;q&quot;):</span><br><span class="line">                 break</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    Solution = Main()</span><br><span class="line">    Solution.Gesture_recognition()</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -300,407 +305,120 @@
     
 <div>
   
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文已结束<i class="fa fa-hourglass-end"></i>非常感谢您的阅读-------------</div>
+    
 </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
+  
+</div>
       
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/08/%E4%BC%98%E5%8C%96%E5%99%A8/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="fhgg888">
-      <meta itemprop="description" content="No pain No game">
-    </span>
+        <div class="reward-container">
+  <div>Your help means a lot to me！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      <div style="display: inline-block;">
+        <img src="/true" alt="fhgg888 enable">
+        <p>enable</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="fhgg888 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="fhgg888 支付宝">
+        <p>支付宝</p>
+      </div>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TAG Park">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/04/08/%E4%BC%98%E5%8C%96%E5%99%A8/" class="post-title-link" itemprop="url">由浅入深了解优化器(Optimizer)</a>
-        </h2>
+  </div>
+</div>
 
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
+        
 
-              <time title="创建时间：2023-04-08 19:14:31 / 修改时间：20:21:30" itemprop="dateCreated datePublished" datetime="2023-04-08T19:14:31+08:00">2023-04-08</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/note/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/note/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E4%BC%98%E5%8C%96%E5%99%A8/" itemprop="url" rel="index"><span itemprop="name">优化器</span></a>
-                </span>
-            </span>
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>fhgg888
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2023/04/08/OpenCV%E6%89%8B%E5%8A%BF%E8%AF%86%E5%88%AB/" title="基于mediaPipe和OpenCV手势识别">http://example.com/2023/04/08/OpenCV手势识别/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>5k</span>
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat_channel.jpg">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
             </span>
 
+            <span class="label">微信</span>
+          </a>
         </div>
-      </header>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="由浅入深了解优化器-Optimizer"><a href="#由浅入深了解优化器-Optimizer" class="headerlink" title="由浅入深了解优化器(Optimizer)"></a>由浅入深了解优化器(Optimizer)</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><blockquote>
-<p>1.什么是优化器？</p>
-<p>2.有哪些优化器</p>
-<p>3.优化算法的选择与使用策略</p>
-<h2 id="1-什么是优化器？"><a href="#1-什么是优化器？" class="headerlink" title="1.什么是优化器？"></a>1.什么是优化器？</h2><h3 id="（1）解释"><a href="#（1）解释" class="headerlink" title="（1）解释"></a>（1）解释</h3></blockquote>
-<p>  优化器就是在深度学习反向传播过程中，指引损失函数（目标函数）的各个参数往正确的方向更新合适的大小，使得更新后的各个参数让损失函数值不断逼近全局最小。<br>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/04/08/%E4%BC%98%E5%8C%96%E5%99%A8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-<div>
-  
-</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/08/%E5%A1%9E%E5%B0%94%E8%BE%BE%E5%AE%9E%E7%94%A8%E7%9A%84%E7%A8%8B%E9%94%99/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="fhgg888">
-      <meta itemprop="description" content="No pain No game">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TAG Park">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/04/08/%E5%A1%9E%E5%B0%94%E8%BE%BE%E5%AE%9E%E7%94%A8%E7%9A%84%E7%A8%8B%E9%94%99/" class="post-title-link" itemprop="url">塞尔达：旷野之息实用的程错</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-04-08 19:14:31 / 修改时间：20:00:29" itemprop="dateCreated datePublished" datetime="2023-04-08T19:14:31+08:00">2023-04-08</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B8%B8%E6%88%8F/" itemprop="url" rel="index"><span itemprop="name">游戏</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B8%B8%E6%88%8F/%E5%A1%9E%E5%B0%94%E8%BE%BE%E4%BC%A0%E8%AF%B4/" itemprop="url" rel="index"><span itemprop="name">塞尔达传说</span></a>
-                </span>
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
             </span>
 
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>17</span>
-            </span>
-
+            <span class="label">RSS</span>
+          </a>
         </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="塞尔达：旷野之息实用的程错"><a href="#塞尔达：旷野之息实用的程错" class="headerlink" title="塞尔达：旷野之息实用的程错"></a>塞尔达：旷野之息实用的程错</h1><p>有空再写</p>
-<p><img src="https://s1.ax1x.com/2023/04/08/ppHP2lQ.md.jpg" alt=""><br>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/04/08/%E5%A1%9E%E5%B0%94%E8%BE%BE%E5%AE%9E%E7%94%A8%E7%9A%84%E7%A8%8B%E9%94%99/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
     </div>
+  </div>
 
-    
-    
-    
-<div>
-  
-</div>
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/OpenCV/" rel="tag"># OpenCV</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/04/08/%E4%BC%98%E5%8C%96%E5%99%A8/" rel="prev" title="由浅入深了解优化器(Optimizer)">
+      <i class="fa fa-chevron-left"></i> 由浅入深了解优化器(Optimizer)
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/30/MakedownPad%E4%BD%BF%E7%94%A8%E5%B8%AE%E5%8A%A9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="fhgg888">
-      <meta itemprop="description" content="No pain No game">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TAG Park">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/03/30/MakedownPad%E4%BD%BF%E7%94%A8%E5%B8%AE%E5%8A%A9/" class="post-title-link" itemprop="url">MarkdownPad 使用教程</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-03-30 21:01:34" itemprop="dateCreated datePublished" datetime="2023-03-30T21:01:34+08:00">2023-03-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-08 15:51:15" itemprop="dateModified" datetime="2023-04-08T15:51:15+08:00">2023-04-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.5k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
-<li>标题</li>
-<li>列表</li>
-<li>引用</li>
-<li>图片和超链接</li>
-<li>粗体与斜体</li>
-<li>代码框</li>
-<li>转义字符</li>
-<li>其他快捷键</li>
-<li>最后</li>
-</ol>
-<h3 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h3><p>标题的设置很简单，有三种添加方式：①手动添加；②快捷键添加；③选项卡添加，下面分别对这三种方式进行介绍。</p>
-<p>Ⅰ. 手动添加</p>
-<p>一级标题对应的是#一级标题#，二级标题对应##二级标题##，以此类推。</p>
-<p>Ⅱ. 快捷键添加</p>
-<p>直接在键盘上输入ctrl+num就能得到对应标题的级数</p>
-<p>Ⅲ. 选项卡设置</p>
-<p>在菜单栏中选择插入选项卡，找到需要插入的<strong>标题</strong>,添加即可。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/03/30/MakedownPad%E4%BD%BF%E7%94%A8%E5%B8%AE%E5%8A%A9/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-<div>
-  
-</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/26/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="fhgg888">
-      <meta itemprop="description" content="No pain No game">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TAG Park">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/03/26/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-03-26 19:13:00" itemprop="dateCreated datePublished" datetime="2023-03-26T19:13:00+08:00">2023-03-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-30 19:32:19" itemprop="dateModified" datetime="2023-03-30T19:32:19+08:00">2023-03-30</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>311</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/03/26/hello-world/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-<div>
-  
-</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
 
           </div>
           
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81ODI0Mi8zNDcwNQ=="></div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -749,6 +467,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8EmediaPipe%E5%92%8COpenCV%E6%89%8B%E5%8A%BF%E8%AF%86%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">基于mediaPipe和OpenCV手势识别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%8B%E9%83%A8%E8%BF%BD%E8%B8%AA%E6%A8%A1%E5%9D%97-HandTrackingModule-py-%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">手部追踪模块(HandTrackingModule.py)：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E5%87%BD%E6%95%B0main-py"><span class="nav-number">1.2.</span> <span class="nav-text">主函数main.py</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -959,64 +678,24 @@ $(document).ready(function() {
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-          load: ['[tex]/mhchem'],
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-          packages: {'[+]': ['mhchem']},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":1}});</script></body>
 

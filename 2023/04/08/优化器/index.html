@@ -23,23 +23,23 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="由浅入深了解优化器(Optimizer)目录 1.什么是优化器？   2.有哪些优化器   3.优化算法的选择与使用策略  1.什么是优化器？（1）解释  优化器就是在深度学习反向传播过程中，指引损失函数（目标函数）的各个参数往正确的方向更新合适的大小，使得更新后的各个参数让损失函数值不断逼近全局最小。">
+  <meta name="description" content="由浅入深了解优化器(Optimizer)目录 1.什么是优化器？ 2.有哪些优化器 3.优化算法的选择与使用策略 1.什么是优化器？（1）解释   优化器就是在深度学习反向传播过程中，指引损失函数（目标函数）的各个参数往正确的方向更新合适的大小，使得更新后的各个参数让损失函数值不断逼近全局最小。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="由浅入深了解优化器(Optimizer)">
 <meta property="og:url" content="http://example.com/2023/04/08/%E4%BC%98%E5%8C%96%E5%99%A8/index.html">
 <meta property="og:site_name" content="TAG Park">
-<meta property="og:description" content="由浅入深了解优化器(Optimizer)目录 1.什么是优化器？   2.有哪些优化器   3.优化算法的选择与使用策略  1.什么是优化器？（1）解释  优化器就是在深度学习反向传播过程中，指引损失函数（目标函数）的各个参数往正确的方向更新合适的大小，使得更新后的各个参数让损失函数值不断逼近全局最小。">
+<meta property="og:description" content="由浅入深了解优化器(Optimizer)目录 1.什么是优化器？ 2.有哪些优化器 3.优化算法的选择与使用策略 1.什么是优化器？（1）解释   优化器就是在深度学习反向传播过程中，指引损失函数（目标函数）的各个参数往正确的方向更新合适的大小，使得更新后的各个参数让损失函数值不断逼近全局最小。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="f:\Blog\source\images\D.png">
-<meta property="og:image" content="f:\Blog\source\images\E.png">
-<meta property="og:image" content="f:\Blog\source\images\F.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/04/08/ppHPql4.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/04/08/ppHPv01.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/04/08/ppHPxTx.png">
 <meta property="article:published_time" content="2023-04-08T11:14:31.000Z">
-<meta property="article:modified_time" content="2023-04-08T11:14:32.317Z">
+<meta property="article:modified_time" content="2023-04-08T12:21:30.749Z">
 <meta property="article:author" content="fhgg888">
 <meta property="article:tag" content="Note">
 <meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="f:\Blog\source\images\D.png">
+<meta name="twitter:image" content="https://s1.ax1x.com/2023/04/08/ppHPql4.png">
 
 <link rel="canonical" href="http://example.com/2023/04/08/%E4%BC%98%E5%8C%96%E5%99%A8/">
 
@@ -255,7 +255,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-04-08 19:14:31 / 修改时间：19:14:32" itemprop="dateCreated datePublished" datetime="2023-04-08T19:14:31+08:00">2023-04-08</time>
+              <time title="创建时间：2023-04-08 19:14:31 / 修改时间：20:21:30" itemprop="dateCreated datePublished" datetime="2023-04-08T19:14:31+08:00">2023-04-08</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -288,7 +288,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>5.2k</span>
+              <span>5k</span>
             </span>
 
         </div>
@@ -302,22 +302,14 @@
       
         <h1 id="由浅入深了解优化器-Optimizer"><a href="#由浅入深了解优化器-Optimizer" class="headerlink" title="由浅入深了解优化器(Optimizer)"></a>由浅入深了解优化器(Optimizer)</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><blockquote>
 <p>1.什么是优化器？</p>
-</blockquote>
-<blockquote>
 <p>2.有哪些优化器</p>
-</blockquote>
-<blockquote>
 <p>3.优化算法的选择与使用策略</p>
-</blockquote>
-<h2 id="1-什么是优化器？"><a href="#1-什么是优化器？" class="headerlink" title="1.什么是优化器？"></a>1.什么是优化器？</h2><h3 id="（1）解释"><a href="#（1）解释" class="headerlink" title="（1）解释"></a>（1）解释</h3><p>  优化器就是在深度学习反向传播过程中，指引损失函数（目标函数）的各个参数往正确的方向更新合适的大小，使得更新后的各个参数让损失函数值不断逼近全局最小。</p>
-<span id="more"></span>
-<p><img src="F:\Blog\source\images\D.png" alt="图片"></p>
+<h2 id="1-什么是优化器？"><a href="#1-什么是优化器？" class="headerlink" title="1.什么是优化器？"></a>1.什么是优化器？</h2><h3 id="（1）解释"><a href="#（1）解释" class="headerlink" title="（1）解释"></a>（1）解释</h3></blockquote>
+<p>  优化器就是在深度学习反向传播过程中，指引损失函数（目标函数）的各个参数往正确的方向更新合适的大小，使得更新后的各个参数让损失函数值不断逼近全局最小。<br><span id="more"></span><br><img src="https://s1.ax1x.com/2023/04/08/ppHPql4.png" alt=""></p>
 <h3 id="（2）原理解释"><a href="#（2）原理解释" class="headerlink" title="（2）原理解释"></a>（2）原理解释</h3><p>优化问题可以看作是我们站在山上的某个位置（当前参数的位置），想要以最佳的路线去到山下（最优点）。首先，直观的方法是环顾四周，找到下山的最快的方向走一步，然后再次环顾四周，找到最快的方向，直到下山————这样的方法就是最普通的梯度下降————当前的海拔是我们的目标函数值，而我们的每一步找到的方向就是函数梯度的反方向（梯度是函数上升最快的方向，所以梯度的反方向就是函数下降最快的方向）</p>
 <p>事实上，使用梯度下降进行优化，是所有优化器的核心思想。当我们下山时，有两个方面是我们最关心的:</p>
 <blockquote>
 <p>首先是优化方向，决定“前进的方向是否正确”，在优化器中反映为梯度或动量。</p>
-</blockquote>
-<blockquote>
 <p>其次是步长，决定“每一步迈多远”，在优化器中反映为学习率。</p>
 </blockquote>
 <p>所有优化器都在关注这两个方面，但同时也有一些其他问题，比如应该从哪里出发，路线错误应该如何处理……这是一些最新优化器在关注的方向。</p>
@@ -325,80 +317,92 @@
 <p>参数更新步骤如下：</p>
 <p>1.计算目标函数关于当前参数的梯度：</p>
 <blockquote>
-<p>g(𝑡)&#x3D;∇𝑓(𝑤𝑡)</p>
+<p>g(𝑡)=∇𝑓(𝑤𝑡)</p>
 </blockquote>
 <p>2.根据历史梯度计算一阶动量和二阶动量：</p>
 <blockquote>
-<p>$𝑚_𝑡&#x3D;𝜙(𝑔_1,…,𝑔_𝑡 )$</p>
+<p>$𝑚_𝑡=𝜙(𝑔_1,…,𝑔_𝑡 )$</p>
 </blockquote>
 <p>3.计算当前时刻的下降梯度：</p>
 <blockquote>
-<p>𝜂_𝑡&#x3D;𝑎*𝑚_𝑡∕√(𝑣_𝑡 )</p>
+<p>𝜂_𝑡=𝑎*𝑚_𝑡∕√(𝑣_𝑡 )</p>
 </blockquote>
 <p>4.根据下降梯度进行更新参数：</p>
 <blockquote>
-<p>𝜔_(𝑡+1)&#x3D;𝑤<em>𝑡−𝜂</em>(𝑡−1)</p>
+<p>𝜔_(𝑡+1)=𝑤_𝑡−𝜂_(𝑡−1)</p>
 </blockquote>
 <p>步骤3，4对于各个算法基本上都是一致的，主要差别就体现在步骤1，2上。</p>
-<p>##2.有哪些优化器？</p>
-<h3 id="2-1随机梯度下降法-Stochastic-Gradient-Descent-SGD"><a href="#2-1随机梯度下降法-Stochastic-Gradient-Descent-SGD" class="headerlink" title="2.1随机梯度下降法(Stochastic Gradient Descent,SGD)"></a>2.1随机梯度下降法(Stochastic Gradient Descent,SGD)</h3><p>随机梯度下降法每次从训练集中随机选择一个样本来进行学习，SGD没有动量的概念，因此：</p>
-<p>$$<br>m_t &#x3D; g_t; V_t &#x3D; I^2<br>$$</p>
-<p>代入步骤3，可以得到下降梯度：<br>$$<br>\eta_t &#x3D; \alpha \times g_t<br>$$</p>
-<p><strong>SGD参数更新公式</strong>如下，其中α是学习率，g_t是当前参数梯度<br>$$<br>w_{t+1} &#x3D; w_t - \eta_t &#x3D; w_t - \alpha \times g_t<br>$$</p>
-<p>优点：</p>
+<h2 id="2-有哪些优化器？"><a href="#2-有哪些优化器？" class="headerlink" title="2.有哪些优化器？"></a>2.有哪些优化器？</h2><h3 id="2-1随机梯度下降法-Stochastic-Gradient-Descent-SGD"><a href="#2-1随机梯度下降法-Stochastic-Gradient-Descent-SGD" class="headerlink" title="2.1随机梯度下降法(Stochastic Gradient Descent,SGD)"></a>2.1随机梯度下降法(Stochastic Gradient Descent,SGD)</h3><p>随机梯度下降法每次从训练集中随机选择一个样本来进行学习，SGD没有动量的概念，因此：</p>
+<script type="math/tex; mode=display">
+m\_t = g\_t; V\_t = I^2</script><p>代入步骤3，可以得到下降梯度：</p>
+<script type="math/tex; mode=display">
+\eta\_t = \alpha \times g\_t</script><p><strong>SGD参数更新公式</strong>如下，其中α是学习率，g_t是当前参数梯度</p>
+<script type="math/tex; mode=display">
+w\_{t+1} = w\_t - \eta\_t = w\_t - \alpha \times g\_t</script><p>优点：</p>
 <p>（1）每次只用一个样本更新模型参数，训练速度快<br>（2）随机梯度下降所带来的波动有利于优化的方向从当前的局部极小值点跳到另一个更好的局部极小值点，这样对于非凸函数，最终收敛于一个较好的局部极值点，甚至全局极值点。</p>
 <p>缺点：</p>
-<p>（1）当遇到局部最优点或者鞍点的时候，梯度为0，无法继续更新参数。这时候它天真的以为找到了最优解，其实不然。<br><img src="F:\Blog\source\images\E.png"></p>
+<p>（1）当遇到局部最优点或者鞍点的时候，梯度为0，无法继续更新参数。这时候它天真的以为找到了最优解，其实不然。</p>
+<p><img src="https://s1.ax1x.com/2023/04/08/ppHPv01.png" alt=""></p>
 <p>（2）沿着陡峭方向振荡，而沿着平缓维度进展缓慢，难以迅速收敛。</p>
 <h3 id="SGD-with-Momentum"><a href="#SGD-with-Momentum" class="headerlink" title="SGD with Momentum"></a>SGD with Momentum</h3><p>为了抑制SGD的振荡，SGDM认为梯度下降过程可以加入惯性。下坡的时候如果发现是陡坡，那就利用惯性跑的快一点，SGDM全称是SGD with momentum，它的重点就在于后面的momentum，因为它在SGD的基础上增加了一阶动量的选项。</p>
-<p>$$<br>m_t &#x3D; \beta_1 \times m_{t-1} + (1-\beta_1)\times g_t<br>$$</p>
-<p><strong>SGD-M参数更新公式</strong>如下，其中α是学习率，g_t是当前参数的梯度：<br>$$<br>w_{t+1} &#x3D; w_t - \alpha \times m_t &#x3D; w_t - \alpha \times (\beta_1 \times m_{t-1} + (1-\beta_1)\times g_t)<br>$$</p>
-<p>一阶动量是各个时刻梯度方向的指数移动平均值，也就是说，t时刻下降的方向，不仅由当前点的梯度方向决定，而且由此前累积的下降方向决定。β_1的经验值为0.9，这就意味着下降方向主要是此前积累的下降方向。其实我们举个现实的例子就能知道，引用此前的动量这个想法是一个很棒的方法。比如我们在高速公路上漂移转弯，我们一般都会踩刹车来漂移，主要依靠汽车此前运动的累积动量运动。因为急转弯可是要出大事的（藤原拓海开的AE86除外）</p>
+<script type="math/tex; mode=display">
+m\_t = \beta\_1 \times m\_{t-1} + (1-\beta\_1)\times g\_t</script><p><strong>SGD-M参数更新公式</strong>如下，其中α是学习率，g_t是当前参数的梯度：</p>
+<script type="math/tex; mode=display">
+w\_{t+1} = w\_t - \alpha \times m\_t = w\_t - \alpha \times (\beta\_1 \times m\_{t-1} + (1-\beta\_1)\times g\_t)</script><p>一阶动量是各个时刻梯度方向的指数移动平均值，也就是说，t时刻下降的方向，不仅由当前点的梯度方向决定，而且由此前累积的下降方向决定。β_1的经验值为0.9，这就意味着下降方向主要是此前积累的下降方向。其实我们举个现实的例子就能知道，引用此前的动量这个想法是一个很棒的方法。比如我们在高速公路上漂移转弯，我们一般都会踩刹车来漂移，主要依靠汽车此前运动的累积动量运动。因为急转弯可是要出大事的（藤原拓海开的AE86除外）</p>
 <p>特点：</p>
-<p>因为加入了动量的因素，SGD-M缓解了SGD在局部最优点梯度为0，无法持续更新的问题和振荡幅度过大的问题，但是并没有完全解决，当局部沟壑比较深的时候，动量加持用完了，依然会困在局部最优里来回振荡。<br><img src="F:\Blog\source\images\F.png"></p>
+<p>因为加入了动量的因素，SGD-M缓解了SGD在局部最优点梯度为0，无法持续更新的问题和振荡幅度过大的问题，但是并没有完全解决，当局部沟壑比较深的时候，动量加持用完了，依然会困在局部最优里来回振荡。</p>
+<p><img src="https://s1.ax1x.com/2023/04/08/ppHPxTx.png" alt=""></p>
 <h3 id="2-3-SGD-with-Nesterov-Acceleration"><a href="#2-3-SGD-with-Nesterov-Acceleration" class="headerlink" title="2.3 SGD with Nesterov Acceleration"></a>2.3 SGD with Nesterov Acceleration</h3><p>SGD还有一个问题是困在局部最优的沟壑里振荡。想象你走到一个盆地里，四周都是略高的小山，你觉得没有下坡的方向，那就只能呆在这里了。可是如果你爬上高低，就会发现外面的世界很广阔。因此，我们不能停留在当前位置去观察未来的方向，而要向前一步、多看一步。</p>
-<p>NAG全称为Nesterov Acceleration Gradient，是在SGD、SGD-M上的改进，改进点在于步骤1，我们知道在时刻t的主要方向是由累积动量决定的，自己的梯度方向说了也不算，那与其看当前的梯度方向，不如先看看如果跟着累积动量走了一步，到时候看一步走一步。因此，NAG在步骤1上，不计当前位置的梯度方向，而是计算如果按照累积动量走了一步，那个时候的下降方向：<br>$$<br>g_t &#x3D; \nabla f(w_t - \alpha \centerdot m_{t-1}&#x2F;\sqrt{V_{t-1}})<br>$$</p>
-<p><strong>NAG参数更新公式</strong>如下，其中α是学习率，g_t是当前参数的梯度<br>$$<br>w_{t+1}&#x3D;w_t - \alpha \centerdot g_t &#x3D; w_t - \alpha \times (\nabla f(w_t - \alpha \centerdot m_{t-1}&#x2F;\sqrt{V_{t-1}}))<br>$$</p>
-<p>然后用下一个点的梯度方向，与历史累积动量相结合，计算步骤2中当前时刻的累积动量。</p>
+<p>NAG全称为Nesterov Acceleration Gradient，是在SGD、SGD-M上的改进，改进点在于步骤1，我们知道在时刻t的主要方向是由累积动量决定的，自己的梯度方向说了也不算，那与其看当前的梯度方向，不如先看看如果跟着累积动量走了一步，到时候看一步走一步。因此，NAG在步骤1上，不计当前位置的梯度方向，而是计算如果按照累积动量走了一步，那个时候的下降方向：</p>
+<script type="math/tex; mode=display">
+g\_t = \nabla f(w\_t - \alpha \centerdot m\_{t-1}/\sqrt{V\_{t-1}})</script><p><strong>NAG参数更新公式</strong>如下，其中α是学习率，g_t是当前参数的梯度</p>
+<script type="math/tex; mode=display">
+w\_{t+1}=w\_t - \alpha \centerdot g\_t = w\_t - \alpha \times (\nabla f(w\_t - \alpha \centerdot m\_{t-1}/\sqrt{V\_{t-1}}))</script><p>然后用下一个点的梯度方向，与历史累积动量相结合，计算步骤2中当前时刻的累积动量。</p>
 <p>特点：有利于跳出当前局部最优沟壑，寻找新的最优值，但是收敛速度慢。</p>
 <h3 id="2-4-AdaGrad（自适应学习率算法）"><a href="#2-4-AdaGrad（自适应学习率算法）" class="headerlink" title="2.4 AdaGrad（自适应学习率算法）"></a>2.4 AdaGrad（自适应学习率算法）</h3><p>SGD系列的都没有用到二阶动量。二阶动量的出现，才意味着往“自适应学习率”优化算法的到来。SGD及其变种以同样的学习率更新每个参数，但是对于深度神经网络往往包含大量的参数，这些参数并不是总会用得到的。对于经常更新的参数，我们已经积累了大量关于它的知识，不希望被单个样本影响太大，希望学习速率能慢一点；对于偶尔更新的参数，我们了解的信息太少了，希望能从每个偶然出现的样本身上多学一些，即学习速率大一些。</p>
 <p>怎么用去度量历史更新频率？</p>
-<p>那就是二阶动量————该维度上，记录到目前为止所有梯度值的平方和：<br>$$<br>V_t &#x3D; \sum_{\tau &#x3D; 1}^t {g_{\tau}^2}<br>$$</p>
-<p>我们再回顾以下步骤三的下降梯度：<br>$$<br>\eta &#x3D; \alpha \centerdot m_t&#x2F;\sqrt{V_t}<br>$$</p>
-<p><strong>AdaGrad参数更新公式</strong>如下，其中α是学习率，g_t是当前参数的梯度：<br>$$<br>w_{t+1} &#x3D; w_t - \frac{\alpha \centerdot m_t}{\sqrt{\sum_{\tau &#x3D; 1}^t g_{\tau}^2}}<br>$$</p>
-<p>可以看出，此时实质上的学习率由α变成了α&#x2F;sqrt(V_t).一般为了避免分母为0，会在分母上加一个小的平滑项。因此sqrt(V_t)是恒大于0的，而且参数更新的越频繁，二阶动量越大，学习率越小。</p>
+<p>那就是二阶动量————该维度上，记录到目前为止所有梯度值的平方和：</p>
+<script type="math/tex; mode=display">
+V\_t = \sum\_{\tau = 1}^t {g\_{\tau}^2}</script><p>我们再回顾以下步骤三的下降梯度：</p>
+<script type="math/tex; mode=display">
+\eta = \alpha \centerdot m\_t/\sqrt{V\_t}</script><p><strong>AdaGrad参数更新公式</strong>如下，其中α是学习率，g_t是当前参数的梯度：</p>
+<script type="math/tex; mode=display">
+w\_{t+1} = w\_t - \frac{\alpha \centerdot m\_t}{\sqrt{\sum\_{\tau = 1}^t g\_{\tau}^2}}</script><p>可以看出，此时实质上的学习率由α变成了α/sqrt(V_t).一般为了避免分母为0，会在分母上加一个小的平滑项。因此sqrt(V_t)是恒大于0的，而且参数更新的越频繁，二阶动量越大，学习率越小。</p>
 <p>优点：</p>
 <p>（1）在稀疏数据场景下表现得非常好</p>
 <p> (2) 此前的SGD及其变体的优化器主要聚焦在优化梯度前进的方向上，而AdaGrad首次使用二阶动量来关注学习率（步长），开启了自适应学习率算法的里程。</p>
 <p>缺点：</p>
 <p> 因为sqrt(V_t)是单调递增的，会使得学习率单调递减至0，可能使得训练过程提前结束，即便后续还有数据也无法学习到必要的知识。</p>
-<h3 id="2-5-AdaDelta-x2F-RMSProp"><a href="#2-5-AdaDelta-x2F-RMSProp" class="headerlink" title="2.5 AdaDelta&#x2F;RMSProp"></a>2.5 AdaDelta&#x2F;RMSProp</h3><p>由于AdaGrad单调递减的学习率变化过于激进，考虑一个改变二阶动量的计算方法的策略：不累计全部历史梯度，而只关注过去一段时间窗口的下降速度。这就是AdaDe名称Delta的来历。</p>
+<h3 id="2-5-AdaDelta-RMSProp"><a href="#2-5-AdaDelta-RMSProp" class="headerlink" title="2.5 AdaDelta/RMSProp"></a>2.5 AdaDelta/RMSProp</h3><p>由于AdaGrad单调递减的学习率变化过于激进，考虑一个改变二阶动量的计算方法的策略：不累计全部历史梯度，而只关注过去一段时间窗口的下降速度。这就是AdaDe名称Delta的来历。</p>
 <p>修改的思路很简单，前面讲到，指数移动平均值大约就是过去一段时间的平均值，因此我们用这一方法来计算二阶累积动量：</p>
-<p>$$<br>V_t &#x3D; \beta_2 \centerdot V_{t-1} + (1-\beta_2)\centerdot g_t^2<br>$$</p>
-<p><strong>AdaDelta&#x2F;RMSProp参数更新公式</strong></p>
-<p>$$<br>w_{t+1} &#x3D; w_t - \frac{\alpha \centerdot m_t}{\sqrt{\beta_2 \centerdot V_{t-1}+(1-\beta_2)g_t^2}}<br>$$<br>优点：</p>
+<script type="math/tex; mode=display">
+V\_t = \beta\_2 \centerdot V\_{t-1} + (1-\beta\_2)\centerdot g\_t^2</script><p><strong>AdaDelta/RMSProp参数更新公式</strong></p>
+<script type="math/tex; mode=display">
+w\_{t+1} = w\_t - \frac{\alpha \centerdot m\_t}{\sqrt{\beta\_2 \centerdot V\_{t-1}+(1-\beta\_2)g\_t^2}}</script><p>优点：</p>
 <p>避免了二阶动量持续累积，导致训练过程提前结束的问题。</p>
 <h3 id="2-6-Adam"><a href="#2-6-Adam" class="headerlink" title="2.6 Adam"></a>2.6 Adam</h3><p>SGD-M在SGD基础上增加了一阶动量，AdaGrad和AdaDelta在SGD基础上增加了二阶动量。把一阶动量和二阶动量都用起来，就是Adam————Adaptive + Momentum</p>
 <p>SGD的一阶动量：</p>
-<p>$$<br>m_t &#x3D; \beta_1 \centerdot m_{t-1} + (1-\beta_1)\centerdot g_t<br>$$</p>
-<p>加上AdaDelta的二阶动量：</p>
-<p>$$<br>V_t &#x3D; \beta_2 \centerdot V_{t-1} + (1-\beta_2)g_t^2<br>$$</p>
-<p><strong>Adam参数更新公式</strong>如下：<br>$$<br>w_{t+1} &#x3D; w_t - \frac{\alpha \centerdot m_t}{\sqrt{V_t}}<br>$$</p>
-<p>优化算法里最常见的两个超参数β1和β2就在这里，前者控制一阶动量，后者控制二阶动量。</p>
+<script type="math/tex; mode=display">
+m\_t = \beta\_1 \centerdot m\_{t-1} + (1-\beta\_1)\centerdot g\_t</script><p>加上AdaDelta的二阶动量：</p>
+<script type="math/tex; mode=display">
+V\_t = \beta\_2 \centerdot V\_{t-1} + (1-\beta\_2)g\_t^2</script><p><strong>Adam参数更新公式</strong>如下：</p>
+<script type="math/tex; mode=display">
+w\_{t+1} = w\_t - \frac{\alpha \centerdot m\_t}{\sqrt{V\_t}}</script><p>优化算法里最常见的两个超参数β1和β2就在这里，前者控制一阶动量，后者控制二阶动量。</p>
 <p>优点：</p>
 <p>（1）通过一阶动量和二阶动量，有效控制学习率步长和梯度方向，防止梯度的振荡和在鞍点的静止。</p>
 <p>缺点：</p>
 <p><strong>（1）可能不收敛：</strong></p>
 <p>二阶动量是固定时间窗口内的累积，随着时间窗口的变化，遇到的数据可能发生巨变，使得V_t可能会时大时小，不是单调变化。这就可能在训练后期引起学习率的震荡，导致模型无法收敛。</p>
 <p>修正的方法。由于Adam中的学习率主要是由二阶动量控制的，为了保证算法的收敛，可以对二阶动量的变化进行控制，避免上下波动。</p>
-<p>$$<br>V_t &#x3D; max(\beta_2 \times V_{t-1}+(1-\beta_2)g_t^2,V_{t-1})<br>$$</p>
-<p>通过这样修改，就保证了||V_t|| &gt;&#x3D; ||V_t-1||，从而使得学习率单调递减。</p>
-<p>**（2）可能会错过全局最优解 **</p>
+<script type="math/tex; mode=display">
+V\_t = max(\beta\_2 \times V\_{t-1}+(1-\beta\_2)g\_t^2,V\_{t-1})</script><p>通过这样修改，就保证了||V_t|| &gt;= ||V_t-1||，从而使得学习率单调递减。</p>
+<p><strong>（2）可能会错过全局最优解 </strong></p>
 <p>自适应学习率算法可能对前期出现的特征过拟合，后期才出现的特征很难纠正前期的拟合效果。后期Adam学习率太低，影响了有效的收敛。</p>
 <h3 id="2-7-Nadam"><a href="#2-7-Nadam" class="headerlink" title="2.7 Nadam"></a>2.7 Nadam</h3><p>它是在Adam的基础上，增加了带有Nesterov加速度梯度计算的思想</p>
-<p>Nesterov + Adam &#x3D; Nadam</p>
-<p>按照NAG的步骤：<br>$$<br>g_t &#x3D; \nabla f(w_t - \frat{\alpha m_{t-1}}{\sqrt{V_t}})<br>$$</p>
-<h2 id="3-优化算法的选择与使用策略"><a href="#3-优化算法的选择与使用策略" class="headerlink" title="3. 优化算法的选择与使用策略"></a>3. 优化算法的选择与使用策略</h2><p>优化算法的常用tricks</p>
+<p>Nesterov + Adam = Nadam</p>
+<p>按照NAG的步骤：</p>
+<script type="math/tex; mode=display">
+g\_t = \nabla f(w\_t - \frat{\alpha m\_{t-1}}{\sqrt{V\_t}})</script><h2 id="3-优化算法的选择与使用策略"><a href="#3-优化算法的选择与使用策略" class="headerlink" title="3. 优化算法的选择与使用策略"></a>3. 优化算法的选择与使用策略</h2><p>优化算法的常用tricks</p>
 <p>（1）首先，各大算法孰优孰劣并无定论。如果是刚入门，优先考虑SGD+Nesterov Momentum或者Adam。</p>
 <p>（2）选择你熟悉的算法——这样你可以更加熟练地利用你的经验进行调参。</p>
 <p>（3）充分了解你的数据——如果模型是非常稀疏的，那么优先考虑自适应学习率的算法。</p>
@@ -515,10 +519,13 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/03/30/MakedownPad%E4%BD%BF%E7%94%A8%E5%B8%AE%E5%8A%A9/" rel="prev" title="MarkdownPad 使用教程">
-      <i class="fa fa-chevron-left"></i> MarkdownPad 使用教程
+    <a href="/2023/04/08/%E5%A1%9E%E5%B0%94%E8%BE%BE%E5%AE%9E%E7%94%A8%E7%9A%84%E7%A8%8B%E9%94%99/" rel="prev" title="塞尔达：旷野之息实用的程错">
+      <i class="fa fa-chevron-left"></i> 塞尔达：旷野之息实用的程错
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2023/04/08/OpenCV%E6%89%8B%E5%8A%BF%E8%AF%86%E5%88%AB/" rel="next" title="基于mediaPipe和OpenCV手势识别">
+      基于mediaPipe和OpenCV手势识别 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -584,7 +591,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%B1%E6%B5%85%E5%85%A5%E6%B7%B1%E4%BA%86%E8%A7%A3%E4%BC%98%E5%8C%96%E5%99%A8-Optimizer"><span class="nav-number">1.</span> <span class="nav-text">由浅入深了解优化器(Optimizer)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95"><span class="nav-number">1.1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E4%BC%98%E5%8C%96%E5%99%A8%EF%BC%9F"><span class="nav-number">1.2.</span> <span class="nav-text">1.什么是优化器？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E8%A7%A3%E9%87%8A"><span class="nav-number">1.2.1.</span> <span class="nav-text">（1）解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E5%8E%9F%E7%90%86%E8%A7%A3%E9%87%8A"><span class="nav-number">1.2.2.</span> <span class="nav-text">（2）原理解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E5%85%AC%E5%BC%8F%E5%92%8C%E5%AE%9A%E4%B9%89"><span class="nav-number">1.2.3.</span> <span class="nav-text">（3）公式和定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95-Stochastic-Gradient-Descent-SGD"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.1随机梯度下降法(Stochastic Gradient Descent,SGD)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SGD-with-Momentum"><span class="nav-number">1.2.5.</span> <span class="nav-text">SGD with Momentum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-SGD-with-Nesterov-Acceleration"><span class="nav-number">1.2.6.</span> <span class="nav-text">2.3 SGD with Nesterov Acceleration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-AdaGrad%EF%BC%88%E8%87%AA%E9%80%82%E5%BA%94%E5%AD%A6%E4%B9%A0%E7%8E%87%E7%AE%97%E6%B3%95%EF%BC%89"><span class="nav-number">1.2.7.</span> <span class="nav-text">2.4 AdaGrad（自适应学习率算法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-AdaDelta-x2F-RMSProp"><span class="nav-number">1.2.8.</span> <span class="nav-text">2.5 AdaDelta&#x2F;RMSProp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-Adam"><span class="nav-number">1.2.9.</span> <span class="nav-text">2.6 Adam</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-Nadam"><span class="nav-number">1.2.10.</span> <span class="nav-text">2.7 Nadam</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95%E7%9A%84%E9%80%89%E6%8B%A9%E4%B8%8E%E4%BD%BF%E7%94%A8%E7%AD%96%E7%95%A5"><span class="nav-number">1.3.</span> <span class="nav-text">3. 优化算法的选择与使用策略</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%B1%E6%B5%85%E5%85%A5%E6%B7%B1%E4%BA%86%E8%A7%A3%E4%BC%98%E5%8C%96%E5%99%A8-Optimizer"><span class="nav-number">1.</span> <span class="nav-text">由浅入深了解优化器(Optimizer)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95"><span class="nav-number">1.1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E4%BC%98%E5%8C%96%E5%99%A8%EF%BC%9F"><span class="nav-number">1.2.</span> <span class="nav-text">1.什么是优化器？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E8%A7%A3%E9%87%8A"><span class="nav-number">1.2.1.</span> <span class="nav-text">（1）解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E5%8E%9F%E7%90%86%E8%A7%A3%E9%87%8A"><span class="nav-number">1.2.2.</span> <span class="nav-text">（2）原理解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E5%85%AC%E5%BC%8F%E5%92%8C%E5%AE%9A%E4%B9%89"><span class="nav-number">1.2.3.</span> <span class="nav-text">（3）公式和定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%9C%89%E5%93%AA%E4%BA%9B%E4%BC%98%E5%8C%96%E5%99%A8%EF%BC%9F"><span class="nav-number">1.3.</span> <span class="nav-text">2.有哪些优化器？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95-Stochastic-Gradient-Descent-SGD"><span class="nav-number">1.3.1.</span> <span class="nav-text">2.1随机梯度下降法(Stochastic Gradient Descent,SGD)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SGD-with-Momentum"><span class="nav-number">1.3.2.</span> <span class="nav-text">SGD with Momentum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-SGD-with-Nesterov-Acceleration"><span class="nav-number">1.3.3.</span> <span class="nav-text">2.3 SGD with Nesterov Acceleration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-AdaGrad%EF%BC%88%E8%87%AA%E9%80%82%E5%BA%94%E5%AD%A6%E4%B9%A0%E7%8E%87%E7%AE%97%E6%B3%95%EF%BC%89"><span class="nav-number">1.3.4.</span> <span class="nav-text">2.4 AdaGrad（自适应学习率算法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-AdaDelta-RMSProp"><span class="nav-number">1.3.5.</span> <span class="nav-text">2.5 AdaDelta&#x2F;RMSProp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-Adam"><span class="nav-number">1.3.6.</span> <span class="nav-text">2.6 Adam</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-Nadam"><span class="nav-number">1.3.7.</span> <span class="nav-text">2.7 Nadam</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95%E7%9A%84%E9%80%89%E6%8B%A9%E4%B8%8E%E4%BD%BF%E7%94%A8%E7%AD%96%E7%95%A5"><span class="nav-number">1.4.</span> <span class="nav-text">3. 优化算法的选择与使用策略</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -604,20 +611,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -683,7 +690,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共4.7k字</span>
+  <span class="post-count">博客全站共5.8k字</span>
 </div>
 
 //访问量统计设定
@@ -795,6 +802,61 @@ $(document).ready(function() {
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

@@ -1,26 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>基于mediaPipe和OpenCV手势识别</title>
+    <url>/2023/04/08/OpenCV%E6%89%8B%E5%8A%BF%E8%AF%86%E5%88%AB/</url>
+    <content><![CDATA[<h1 id="基于mediaPipe和OpenCV手势识别"><a href="#基于mediaPipe和OpenCV手势识别" class="headerlink" title="基于mediaPipe和OpenCV手势识别"></a>基于mediaPipe和OpenCV手势识别</h1><p><img src="https://s1.ax1x.com/2023/04/08/ppHPhmn.jpg" alt=""></p>
+<h2 id="手部追踪模块-HandTrackingModule-py-："><a href="#手部追踪模块-HandTrackingModule-py-：" class="headerlink" title="手部追踪模块(HandTrackingModule.py)："></a>手部追踪模块(HandTrackingModule.py)：</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">import cv2</span><br><span class="line">import mediapipe as mp</span><br><span class="line"></span><br><span class="line">class HandDetector:</span><br><span class="line">    <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">    使用mediapipe库查找手。导出地标像素格式。添加了额外的功能。</span></span><br><span class="line"><span class="string">    如查找方式，许多手指向上或两个手指之间的距离。而且提供找到的手的边界框信息。</span></span><br><span class="line"><span class="string">    &quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">    def __init__(self, mode=False, maxHands=2, detectionCon=0.5, minTrackCon = 0.5):</span><br><span class="line">        <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">        :param mode: 在静态模式下，对每个图像进行检测</span></span><br><span class="line"><span class="string">        :param maxHands: 要检测的最大手数</span></span><br><span class="line"><span class="string">        :param detectionCon: 最小检测置信度</span></span><br><span class="line"><span class="string">        :param minTrackCon: 最小跟踪置信度</span></span><br><span class="line"><span class="string">        &quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">        self.mode = mode</span><br><span class="line">        self.maxHands = maxHands</span><br><span class="line">        self.modelComplex = False</span><br><span class="line">        self.detectionCon = detectionCon</span><br><span class="line">        self.minTrackCon = minTrackCon</span><br><span class="line"></span><br><span class="line">		<span class="comment"># 初始化手部识别模型</span></span><br><span class="line">        self.mpHands = mp.solutions.hands</span><br><span class="line">        self.hands = self.mpHands.Hands(self.mode, self.maxHands, self.modelComplex,</span><br><span class="line">                                        self.detectionCon, self.minTrackCon)</span><br><span class="line">        self.mpDraw = mp.solutions.drawing_utils	<span class="comment"># 初始化绘图器</span></span><br><span class="line">        self.tipIds = [4, 8, 12, 16, 20]			<span class="comment"># 指尖列表</span></span><br><span class="line">        self.fingers = []</span><br><span class="line">        self.lmList = []</span><br><span class="line"></span><br><span class="line">    def findHands(self, img, draw=True):</span><br><span class="line">        <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">        从图像(BRG)中找到手部。</span></span><br><span class="line"><span class="string">        :param img: 用于查找手的图像。</span></span><br><span class="line"><span class="string">        :param draw: 在图像上绘制输出的标志。</span></span><br><span class="line"><span class="string">        :return: 带或不带图形的图像</span></span><br><span class="line"><span class="string">        &quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">        imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) <span class="comment"># 将传入的图像由BGR模式转标准的Opencv模式——RGB模式，</span></span><br><span class="line">        self.results = self.hands.process(imgRGB)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> self.results.multi_hand_landmarks:</span><br><span class="line">            <span class="keyword">for</span> handLms <span class="keyword">in</span> self.results.multi_hand_landmarks:</span><br><span class="line">                <span class="keyword">if</span> draw:</span><br><span class="line">                    self.mpDraw.draw_landmarks(img, handLms,</span><br><span class="line">                                               self.mpHands.HAND_CONNECTIONS)</span><br><span class="line">        <span class="built_in">return</span> img</span><br><span class="line"></span><br><span class="line">    def findPosition(self, img, handNo=0, draw=True):</span><br><span class="line">        <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">        查找单手的地标并将其放入列表中像素格式。还可以返回手部周围的边界框。</span></span><br><span class="line"><span class="string">        :param img: 要查找的主图像</span></span><br><span class="line"><span class="string">        :param handNo: 如果检测到多只手，则为手部id</span></span><br><span class="line"><span class="string">        :param draw: 在图像上绘制输出的标志。(默认绘制矩形框)</span></span><br><span class="line"><span class="string">        :return: 像素格式的手部关节位置列表；手部边界框</span></span><br><span class="line"><span class="string">        &quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">        xList = []</span><br><span class="line">        yList = []</span><br><span class="line">        bbox = []</span><br><span class="line">        bboxInfo =[]</span><br><span class="line">        self.lmList = []</span><br><span class="line">        <span class="keyword">if</span> self.results.multi_hand_landmarks:</span><br><span class="line">            myHand = self.results.multi_hand_landmarks[handNo]</span><br><span class="line">            <span class="keyword">for</span> <span class="built_in">id</span>, lm <span class="keyword">in</span> enumerate(myHand.landmark):</span><br><span class="line">                h, w, c = img.shape</span><br><span class="line">                px, py = int(lm.x * w), int(lm.y * h)</span><br><span class="line">                xList.append(px)</span><br><span class="line">                yList.append(py)</span><br><span class="line">                self.lmList.append([px, py])</span><br><span class="line">                <span class="keyword">if</span> draw:</span><br><span class="line">                    cv2.circle(img, (px, py), 5, (255, 0, 255), cv2.FILLED)</span><br><span class="line">            xmin, xmax = min(xList), max(xList)</span><br><span class="line">            ymin, ymax = min(yList), max(yList)</span><br><span class="line">            boxW, boxH = xmax - xmin, ymax - ymin</span><br><span class="line">            bbox = xmin, ymin, boxW, boxH</span><br><span class="line">            cx, cy = bbox[0] + (bbox[2] // 2), \</span><br><span class="line">                     bbox[1] + (bbox[3] // 2)</span><br><span class="line">            bboxInfo = &#123;<span class="string">&quot;id&quot;</span>: <span class="built_in">id</span>, <span class="string">&quot;bbox&quot;</span>: bbox,<span class="string">&quot;center&quot;</span>: (cx, cy)&#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> draw:</span><br><span class="line">                cv2.rectangle(img, (bbox[0] - 20, bbox[1] - 20),</span><br><span class="line">                              (bbox[0] + bbox[2] + 20, bbox[1] + bbox[3] + 20),</span><br><span class="line">                              (0, 255, 0), 2)</span><br><span class="line"></span><br><span class="line">        <span class="built_in">return</span> self.lmList, bboxInfo</span><br><span class="line"></span><br><span class="line">    def fingersUp(self):</span><br><span class="line">        <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">        查找列表中打开并返回的手指数。会分别考虑左手和右手</span></span><br><span class="line"><span class="string">        ：return：竖起手指的列表</span></span><br><span class="line"><span class="string">        &quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> self.results.multi_hand_landmarks:</span><br><span class="line">            myHandType = self.handType()</span><br><span class="line">            fingers = []</span><br><span class="line">            <span class="comment"># Thumb</span></span><br><span class="line">            <span class="keyword">if</span> myHandType == <span class="string">&quot;Right&quot;</span>:</span><br><span class="line">                <span class="keyword">if</span> self.lmList[self.tipIds[0]][0] &gt; self.lmList[self.tipIds[0] - 1][0]:</span><br><span class="line">                    fingers.append(1)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    fingers.append(0)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> self.lmList[self.tipIds[0]][0] &lt; self.lmList[self.tipIds[0] - 1][0]:</span><br><span class="line">                    fingers.append(1)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    fingers.append(0)</span><br><span class="line">            <span class="comment"># 4 Fingers</span></span><br><span class="line">            <span class="keyword">for</span> <span class="built_in">id</span> <span class="keyword">in</span> range(1, 5):</span><br><span class="line">                <span class="keyword">if</span> self.lmList[self.tipIds[<span class="built_in">id</span>]][1] &lt; self.lmList[self.tipIds[<span class="built_in">id</span>] - 2][1]:</span><br><span class="line">                    fingers.append(1)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    fingers.append(0)</span><br><span class="line">        <span class="built_in">return</span> fingers</span><br><span class="line"></span><br><span class="line">    def handType(self):</span><br><span class="line">        <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">        检查传入的手部是左还是右</span></span><br><span class="line"><span class="string">        ：return: &quot;</span>Right<span class="string">&quot; 或 &quot;</span>Left<span class="string">&quot;</span></span><br><span class="line"><span class="string">        &quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> self.results.multi_hand_landmarks:</span><br><span class="line">            <span class="keyword">if</span> self.lmList[17][0] &lt; self.lmList[5][0]:</span><br><span class="line">                <span class="built_in">return</span> <span class="string">&quot;Right&quot;</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="built_in">return</span> <span class="string">&quot;Left&quot;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h2 id="主函数main-py"><a href="#主函数main-py" class="headerlink" title="主函数main.py"></a>主函数main.py</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line">import cv2</span><br><span class="line">from HandTrackingModule import HandDetector</span><br><span class="line">from PIL import Image,ImageDraw,ImageFont</span><br><span class="line">import numpy</span><br><span class="line"></span><br><span class="line"><span class="comment">#解决中文出现乱码问题</span></span><br><span class="line">def cv2ImgAddText(img, text, left, top, textColor=(0, 255, 0), textSize=20):</span><br><span class="line">    <span class="keyword">if</span> (isinstance(img, numpy.ndarray)):  <span class="comment"># 判断是否OpenCV图片类型</span></span><br><span class="line">        img = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))</span><br><span class="line">    <span class="comment"># 创建一个可以在给定图像上绘图的对象</span></span><br><span class="line">    draw = ImageDraw.Draw(img)</span><br><span class="line">    <span class="comment"># 字体的格式</span></span><br><span class="line">    fontStyle = ImageFont.truetype(</span><br><span class="line">        <span class="string">&quot;font/simsun.ttc&quot;</span>, textSize, encoding=<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">    <span class="comment"># 绘制文本</span></span><br><span class="line">    draw.text((left, top), text, textColor, font=fontStyle)</span><br><span class="line">    # 转换回OpenCV格式</span><br><span class="line">    return cv2.cvtColor(numpy.asarray(img), cv2.COLOR_RGB2BGR)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Main:</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.camera = cv2.VideoCapture(<span class="number">0</span>,cv2.CAP_DSHOW)</span><br><span class="line">        self.camera.set(<span class="number">3</span>, <span class="number">1280</span>)</span><br><span class="line">        self.camera.set(<span class="number">4</span>, <span class="number">720</span>)</span><br><span class="line"></span><br><span class="line">    def Gesture_recognition(self):</span><br><span class="line">        while True:</span><br><span class="line">            self.detector = HandDetector()</span><br><span class="line">            frame, img = self.camera.read()</span><br><span class="line">            img = self.detector.findHands(img)</span><br><span class="line">            lmList, bbox = self.detector.findPosition(img)</span><br><span class="line"></span><br><span class="line">            if lmList:</span><br><span class="line">                x_1, y_1 = bbox[&quot;bbox&quot;][<span class="number">0</span>], bbox[&quot;bbox&quot;][<span class="number">1</span>]</span><br><span class="line">                x1, x2, x3, x4, x5 = self.detector.fingersUp()</span><br><span class="line"></span><br><span class="line">                if (x2 == <span class="number">1</span> and x3 == <span class="number">1</span>) and (x4 == <span class="number">0</span> and x5 == <span class="number">0</span> and x1 == <span class="number">0</span>):</span><br><span class="line">                    cv2.putText(img, &quot;<span class="number">2</span>_TWO&quot;, (x_1, y_1), cv2.FONT_HERSHEY_PLAIN, <span class="number">3</span>,</span><br><span class="line">                                (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">3</span>)</span><br><span class="line">                elif (x2 == <span class="number">1</span> and x3 == <span class="number">1</span> and x4 == <span class="number">1</span>) and (x1 == <span class="number">0</span> and x5 == <span class="number">0</span>):</span><br><span class="line">                    cv2.putText(img, &quot;<span class="number">3</span>_THREE&quot;, (x_1, y_1), cv2.FONT_HERSHEY_PLAIN, <span class="number">3</span>,</span><br><span class="line">                                (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">3</span>)</span><br><span class="line">                elif (x2 == <span class="number">1</span> and x3 == <span class="number">1</span> and x4 == <span class="number">1</span> and x5 == <span class="number">1</span>) and (x1 == <span class="number">0</span>):</span><br><span class="line">                    cv2.putText(img, &quot;<span class="number">4</span>_FOUR&quot;, (x_1, y_1), cv2.FONT_HERSHEY_PLAIN, <span class="number">3</span>,</span><br><span class="line">                                (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">3</span>)</span><br><span class="line">                elif x1 == <span class="number">1</span> and x2 == <span class="number">1</span> and x3 == <span class="number">1</span> and x4 == <span class="number">1</span> and x5 == <span class="number">1</span>:</span><br><span class="line">                    cv2.putText(img, &quot;<span class="number">5</span>_FIVE&quot;, (x_1, y_1), cv2.FONT_HERSHEY_PLAIN, <span class="number">3</span>,</span><br><span class="line">                                (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">3</span>)</span><br><span class="line">                elif x2 == <span class="number">1</span> and (x1 == <span class="number">0</span>, x3 == <span class="number">0</span>, x4 == <span class="number">0</span>, x5 == <span class="number">0</span>):</span><br><span class="line">                    cv2.putText(img, &quot;<span class="number">1</span>_ONE&quot;, (x_1, y_1), cv2.FONT_HERSHEY_PLAIN, <span class="number">3</span>,</span><br><span class="line">                                (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">3</span>)</span><br><span class="line">                elif x1 == <span class="number">1</span> and (x2 == <span class="number">0</span>, x3 == <span class="number">0</span>, x4 == <span class="number">0</span>, x5 == <span class="number">0</span>):</span><br><span class="line">                    img = cv2ImgAddText(img,&#x27;杰哥觉得很赞&#x27;,left = x_1,top=y_1,textColor=(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>),textSize = <span class="number">45</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            cv2.imshow(&quot;camera&quot;, img)</span><br><span class="line">            #if cv2.getWindowProperty(&#x27;camera&#x27;, cv2.WND_PROP_VISIBLE) &lt; <span class="number">1</span>:</span><br><span class="line">            #    break</span><br><span class="line">            cv2.waitKey(<span class="number">1</span>)</span><br><span class="line">            if cv2.waitKey(<span class="number">1</span>) &amp; <span class="number">0</span>xFF == ord(&quot;q&quot;):</span><br><span class="line">                 break</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    Solution = Main()</span><br><span class="line">    Solution.Gesture_recognition()</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>python</category>
+        <category>OpenCV</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>OpenCV</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>由浅入深了解优化器(Optimizer)</title>
     <url>/2023/04/08/%E4%BC%98%E5%8C%96%E5%99%A8/</url>
     <content><![CDATA[<h1 id="由浅入深了解优化器-Optimizer"><a href="#由浅入深了解优化器-Optimizer" class="headerlink" title="由浅入深了解优化器(Optimizer)"></a>由浅入深了解优化器(Optimizer)</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><blockquote>
 <p>1.什么是优化器？</p>
-</blockquote>
-<blockquote>
 <p>2.有哪些优化器</p>
-</blockquote>
-<blockquote>
 <p>3.优化算法的选择与使用策略</p>
-</blockquote>
-<h2 id="1-什么是优化器？"><a href="#1-什么是优化器？" class="headerlink" title="1.什么是优化器？"></a>1.什么是优化器？</h2><h3 id="（1）解释"><a href="#（1）解释" class="headerlink" title="（1）解释"></a>（1）解释</h3><p>  优化器就是在深度学习反向传播过程中，指引损失函数（目标函数）的各个参数往正确的方向更新合适的大小，使得更新后的各个参数让损失函数值不断逼近全局最小。</p>
-<span id="more"></span>
-<p><img src="F:\Blog\source\images\D.png" alt="图片"></p>
+<h2 id="1-什么是优化器？"><a href="#1-什么是优化器？" class="headerlink" title="1.什么是优化器？"></a>1.什么是优化器？</h2><h3 id="（1）解释"><a href="#（1）解释" class="headerlink" title="（1）解释"></a>（1）解释</h3></blockquote>
+<p>  优化器就是在深度学习反向传播过程中，指引损失函数（目标函数）的各个参数往正确的方向更新合适的大小，使得更新后的各个参数让损失函数值不断逼近全局最小。<br><span id="more"></span><br><img src="https://s1.ax1x.com/2023/04/08/ppHPql4.png" alt=""></p>
 <h3 id="（2）原理解释"><a href="#（2）原理解释" class="headerlink" title="（2）原理解释"></a>（2）原理解释</h3><p>优化问题可以看作是我们站在山上的某个位置（当前参数的位置），想要以最佳的路线去到山下（最优点）。首先，直观的方法是环顾四周，找到下山的最快的方向走一步，然后再次环顾四周，找到最快的方向，直到下山————这样的方法就是最普通的梯度下降————当前的海拔是我们的目标函数值，而我们的每一步找到的方向就是函数梯度的反方向（梯度是函数上升最快的方向，所以梯度的反方向就是函数下降最快的方向）</p>
 <p>事实上，使用梯度下降进行优化，是所有优化器的核心思想。当我们下山时，有两个方面是我们最关心的:</p>
 <blockquote>
 <p>首先是优化方向，决定“前进的方向是否正确”，在优化器中反映为梯度或动量。</p>
-</blockquote>
-<blockquote>
 <p>其次是步长，决定“每一步迈多远”，在优化器中反映为学习率。</p>
 </blockquote>
 <p>所有优化器都在关注这两个方面，但同时也有一些其他问题，比如应该从哪里出发，路线错误应该如何处理……这是一些最新优化器在关注的方向。</p>
@@ -28,80 +36,92 @@
 <p>参数更新步骤如下：</p>
 <p>1.计算目标函数关于当前参数的梯度：</p>
 <blockquote>
-<p>g(𝑡)&#x3D;∇𝑓(𝑤𝑡)</p>
+<p>g(𝑡)=∇𝑓(𝑤𝑡)</p>
 </blockquote>
 <p>2.根据历史梯度计算一阶动量和二阶动量：</p>
 <blockquote>
-<p>$𝑚_𝑡&#x3D;𝜙(𝑔_1,…,𝑔_𝑡 )$</p>
+<p>$𝑚_𝑡=𝜙(𝑔_1,…,𝑔_𝑡 )$</p>
 </blockquote>
 <p>3.计算当前时刻的下降梯度：</p>
 <blockquote>
-<p>𝜂_𝑡&#x3D;𝑎*𝑚_𝑡∕√(𝑣_𝑡 )</p>
+<p>𝜂_𝑡=𝑎*𝑚_𝑡∕√(𝑣_𝑡 )</p>
 </blockquote>
 <p>4.根据下降梯度进行更新参数：</p>
 <blockquote>
-<p>𝜔_(𝑡+1)&#x3D;𝑤<em>𝑡−𝜂</em>(𝑡−1)</p>
+<p>𝜔_(𝑡+1)=𝑤_𝑡−𝜂_(𝑡−1)</p>
 </blockquote>
 <p>步骤3，4对于各个算法基本上都是一致的，主要差别就体现在步骤1，2上。</p>
-<p>##2.有哪些优化器？</p>
-<h3 id="2-1随机梯度下降法-Stochastic-Gradient-Descent-SGD"><a href="#2-1随机梯度下降法-Stochastic-Gradient-Descent-SGD" class="headerlink" title="2.1随机梯度下降法(Stochastic Gradient Descent,SGD)"></a>2.1随机梯度下降法(Stochastic Gradient Descent,SGD)</h3><p>随机梯度下降法每次从训练集中随机选择一个样本来进行学习，SGD没有动量的概念，因此：</p>
-<p>$$<br>m_t &#x3D; g_t; V_t &#x3D; I^2<br>$$</p>
-<p>代入步骤3，可以得到下降梯度：<br>$$<br>\eta_t &#x3D; \alpha \times g_t<br>$$</p>
-<p><strong>SGD参数更新公式</strong>如下，其中α是学习率，g_t是当前参数梯度<br>$$<br>w_{t+1} &#x3D; w_t - \eta_t &#x3D; w_t - \alpha \times g_t<br>$$</p>
-<p>优点：</p>
+<h2 id="2-有哪些优化器？"><a href="#2-有哪些优化器？" class="headerlink" title="2.有哪些优化器？"></a>2.有哪些优化器？</h2><h3 id="2-1随机梯度下降法-Stochastic-Gradient-Descent-SGD"><a href="#2-1随机梯度下降法-Stochastic-Gradient-Descent-SGD" class="headerlink" title="2.1随机梯度下降法(Stochastic Gradient Descent,SGD)"></a>2.1随机梯度下降法(Stochastic Gradient Descent,SGD)</h3><p>随机梯度下降法每次从训练集中随机选择一个样本来进行学习，SGD没有动量的概念，因此：</p>
+<script type="math/tex; mode=display">
+m\_t = g\_t; V\_t = I^2</script><p>代入步骤3，可以得到下降梯度：</p>
+<script type="math/tex; mode=display">
+\eta\_t = \alpha \times g\_t</script><p><strong>SGD参数更新公式</strong>如下，其中α是学习率，g_t是当前参数梯度</p>
+<script type="math/tex; mode=display">
+w\_{t+1} = w\_t - \eta\_t = w\_t - \alpha \times g\_t</script><p>优点：</p>
 <p>（1）每次只用一个样本更新模型参数，训练速度快<br>（2）随机梯度下降所带来的波动有利于优化的方向从当前的局部极小值点跳到另一个更好的局部极小值点，这样对于非凸函数，最终收敛于一个较好的局部极值点，甚至全局极值点。</p>
 <p>缺点：</p>
-<p>（1）当遇到局部最优点或者鞍点的时候，梯度为0，无法继续更新参数。这时候它天真的以为找到了最优解，其实不然。<br><img src="F:\Blog\source\images\E.png"></p>
+<p>（1）当遇到局部最优点或者鞍点的时候，梯度为0，无法继续更新参数。这时候它天真的以为找到了最优解，其实不然。</p>
+<p><img src="https://s1.ax1x.com/2023/04/08/ppHPv01.png" alt=""></p>
 <p>（2）沿着陡峭方向振荡，而沿着平缓维度进展缓慢，难以迅速收敛。</p>
 <h3 id="SGD-with-Momentum"><a href="#SGD-with-Momentum" class="headerlink" title="SGD with Momentum"></a>SGD with Momentum</h3><p>为了抑制SGD的振荡，SGDM认为梯度下降过程可以加入惯性。下坡的时候如果发现是陡坡，那就利用惯性跑的快一点，SGDM全称是SGD with momentum，它的重点就在于后面的momentum，因为它在SGD的基础上增加了一阶动量的选项。</p>
-<p>$$<br>m_t &#x3D; \beta_1 \times m_{t-1} + (1-\beta_1)\times g_t<br>$$</p>
-<p><strong>SGD-M参数更新公式</strong>如下，其中α是学习率，g_t是当前参数的梯度：<br>$$<br>w_{t+1} &#x3D; w_t - \alpha \times m_t &#x3D; w_t - \alpha \times (\beta_1 \times m_{t-1} + (1-\beta_1)\times g_t)<br>$$</p>
-<p>一阶动量是各个时刻梯度方向的指数移动平均值，也就是说，t时刻下降的方向，不仅由当前点的梯度方向决定，而且由此前累积的下降方向决定。β_1的经验值为0.9，这就意味着下降方向主要是此前积累的下降方向。其实我们举个现实的例子就能知道，引用此前的动量这个想法是一个很棒的方法。比如我们在高速公路上漂移转弯，我们一般都会踩刹车来漂移，主要依靠汽车此前运动的累积动量运动。因为急转弯可是要出大事的（藤原拓海开的AE86除外）</p>
+<script type="math/tex; mode=display">
+m\_t = \beta\_1 \times m\_{t-1} + (1-\beta\_1)\times g\_t</script><p><strong>SGD-M参数更新公式</strong>如下，其中α是学习率，g_t是当前参数的梯度：</p>
+<script type="math/tex; mode=display">
+w\_{t+1} = w\_t - \alpha \times m\_t = w\_t - \alpha \times (\beta\_1 \times m\_{t-1} + (1-\beta\_1)\times g\_t)</script><p>一阶动量是各个时刻梯度方向的指数移动平均值，也就是说，t时刻下降的方向，不仅由当前点的梯度方向决定，而且由此前累积的下降方向决定。β_1的经验值为0.9，这就意味着下降方向主要是此前积累的下降方向。其实我们举个现实的例子就能知道，引用此前的动量这个想法是一个很棒的方法。比如我们在高速公路上漂移转弯，我们一般都会踩刹车来漂移，主要依靠汽车此前运动的累积动量运动。因为急转弯可是要出大事的（藤原拓海开的AE86除外）</p>
 <p>特点：</p>
-<p>因为加入了动量的因素，SGD-M缓解了SGD在局部最优点梯度为0，无法持续更新的问题和振荡幅度过大的问题，但是并没有完全解决，当局部沟壑比较深的时候，动量加持用完了，依然会困在局部最优里来回振荡。<br><img src="F:\Blog\source\images\F.png"></p>
+<p>因为加入了动量的因素，SGD-M缓解了SGD在局部最优点梯度为0，无法持续更新的问题和振荡幅度过大的问题，但是并没有完全解决，当局部沟壑比较深的时候，动量加持用完了，依然会困在局部最优里来回振荡。</p>
+<p><img src="https://s1.ax1x.com/2023/04/08/ppHPxTx.png" alt=""></p>
 <h3 id="2-3-SGD-with-Nesterov-Acceleration"><a href="#2-3-SGD-with-Nesterov-Acceleration" class="headerlink" title="2.3 SGD with Nesterov Acceleration"></a>2.3 SGD with Nesterov Acceleration</h3><p>SGD还有一个问题是困在局部最优的沟壑里振荡。想象你走到一个盆地里，四周都是略高的小山，你觉得没有下坡的方向，那就只能呆在这里了。可是如果你爬上高低，就会发现外面的世界很广阔。因此，我们不能停留在当前位置去观察未来的方向，而要向前一步、多看一步。</p>
-<p>NAG全称为Nesterov Acceleration Gradient，是在SGD、SGD-M上的改进，改进点在于步骤1，我们知道在时刻t的主要方向是由累积动量决定的，自己的梯度方向说了也不算，那与其看当前的梯度方向，不如先看看如果跟着累积动量走了一步，到时候看一步走一步。因此，NAG在步骤1上，不计当前位置的梯度方向，而是计算如果按照累积动量走了一步，那个时候的下降方向：<br>$$<br>g_t &#x3D; \nabla f(w_t - \alpha \centerdot m_{t-1}&#x2F;\sqrt{V_{t-1}})<br>$$</p>
-<p><strong>NAG参数更新公式</strong>如下，其中α是学习率，g_t是当前参数的梯度<br>$$<br>w_{t+1}&#x3D;w_t - \alpha \centerdot g_t &#x3D; w_t - \alpha \times (\nabla f(w_t - \alpha \centerdot m_{t-1}&#x2F;\sqrt{V_{t-1}}))<br>$$</p>
-<p>然后用下一个点的梯度方向，与历史累积动量相结合，计算步骤2中当前时刻的累积动量。</p>
+<p>NAG全称为Nesterov Acceleration Gradient，是在SGD、SGD-M上的改进，改进点在于步骤1，我们知道在时刻t的主要方向是由累积动量决定的，自己的梯度方向说了也不算，那与其看当前的梯度方向，不如先看看如果跟着累积动量走了一步，到时候看一步走一步。因此，NAG在步骤1上，不计当前位置的梯度方向，而是计算如果按照累积动量走了一步，那个时候的下降方向：</p>
+<script type="math/tex; mode=display">
+g\_t = \nabla f(w\_t - \alpha \centerdot m\_{t-1}/\sqrt{V\_{t-1}})</script><p><strong>NAG参数更新公式</strong>如下，其中α是学习率，g_t是当前参数的梯度</p>
+<script type="math/tex; mode=display">
+w\_{t+1}=w\_t - \alpha \centerdot g\_t = w\_t - \alpha \times (\nabla f(w\_t - \alpha \centerdot m\_{t-1}/\sqrt{V\_{t-1}}))</script><p>然后用下一个点的梯度方向，与历史累积动量相结合，计算步骤2中当前时刻的累积动量。</p>
 <p>特点：有利于跳出当前局部最优沟壑，寻找新的最优值，但是收敛速度慢。</p>
 <h3 id="2-4-AdaGrad（自适应学习率算法）"><a href="#2-4-AdaGrad（自适应学习率算法）" class="headerlink" title="2.4 AdaGrad（自适应学习率算法）"></a>2.4 AdaGrad（自适应学习率算法）</h3><p>SGD系列的都没有用到二阶动量。二阶动量的出现，才意味着往“自适应学习率”优化算法的到来。SGD及其变种以同样的学习率更新每个参数，但是对于深度神经网络往往包含大量的参数，这些参数并不是总会用得到的。对于经常更新的参数，我们已经积累了大量关于它的知识，不希望被单个样本影响太大，希望学习速率能慢一点；对于偶尔更新的参数，我们了解的信息太少了，希望能从每个偶然出现的样本身上多学一些，即学习速率大一些。</p>
 <p>怎么用去度量历史更新频率？</p>
-<p>那就是二阶动量————该维度上，记录到目前为止所有梯度值的平方和：<br>$$<br>V_t &#x3D; \sum_{\tau &#x3D; 1}^t {g_{\tau}^2}<br>$$</p>
-<p>我们再回顾以下步骤三的下降梯度：<br>$$<br>\eta &#x3D; \alpha \centerdot m_t&#x2F;\sqrt{V_t}<br>$$</p>
-<p><strong>AdaGrad参数更新公式</strong>如下，其中α是学习率，g_t是当前参数的梯度：<br>$$<br>w_{t+1} &#x3D; w_t - \frac{\alpha \centerdot m_t}{\sqrt{\sum_{\tau &#x3D; 1}^t g_{\tau}^2}}<br>$$</p>
-<p>可以看出，此时实质上的学习率由α变成了α&#x2F;sqrt(V_t).一般为了避免分母为0，会在分母上加一个小的平滑项。因此sqrt(V_t)是恒大于0的，而且参数更新的越频繁，二阶动量越大，学习率越小。</p>
+<p>那就是二阶动量————该维度上，记录到目前为止所有梯度值的平方和：</p>
+<script type="math/tex; mode=display">
+V\_t = \sum\_{\tau = 1}^t {g\_{\tau}^2}</script><p>我们再回顾以下步骤三的下降梯度：</p>
+<script type="math/tex; mode=display">
+\eta = \alpha \centerdot m\_t/\sqrt{V\_t}</script><p><strong>AdaGrad参数更新公式</strong>如下，其中α是学习率，g_t是当前参数的梯度：</p>
+<script type="math/tex; mode=display">
+w\_{t+1} = w\_t - \frac{\alpha \centerdot m\_t}{\sqrt{\sum\_{\tau = 1}^t g\_{\tau}^2}}</script><p>可以看出，此时实质上的学习率由α变成了α/sqrt(V_t).一般为了避免分母为0，会在分母上加一个小的平滑项。因此sqrt(V_t)是恒大于0的，而且参数更新的越频繁，二阶动量越大，学习率越小。</p>
 <p>优点：</p>
 <p>（1）在稀疏数据场景下表现得非常好</p>
 <p> (2) 此前的SGD及其变体的优化器主要聚焦在优化梯度前进的方向上，而AdaGrad首次使用二阶动量来关注学习率（步长），开启了自适应学习率算法的里程。</p>
 <p>缺点：</p>
 <p> 因为sqrt(V_t)是单调递增的，会使得学习率单调递减至0，可能使得训练过程提前结束，即便后续还有数据也无法学习到必要的知识。</p>
-<h3 id="2-5-AdaDelta-x2F-RMSProp"><a href="#2-5-AdaDelta-x2F-RMSProp" class="headerlink" title="2.5 AdaDelta&#x2F;RMSProp"></a>2.5 AdaDelta&#x2F;RMSProp</h3><p>由于AdaGrad单调递减的学习率变化过于激进，考虑一个改变二阶动量的计算方法的策略：不累计全部历史梯度，而只关注过去一段时间窗口的下降速度。这就是AdaDe名称Delta的来历。</p>
+<h3 id="2-5-AdaDelta-RMSProp"><a href="#2-5-AdaDelta-RMSProp" class="headerlink" title="2.5 AdaDelta/RMSProp"></a>2.5 AdaDelta/RMSProp</h3><p>由于AdaGrad单调递减的学习率变化过于激进，考虑一个改变二阶动量的计算方法的策略：不累计全部历史梯度，而只关注过去一段时间窗口的下降速度。这就是AdaDe名称Delta的来历。</p>
 <p>修改的思路很简单，前面讲到，指数移动平均值大约就是过去一段时间的平均值，因此我们用这一方法来计算二阶累积动量：</p>
-<p>$$<br>V_t &#x3D; \beta_2 \centerdot V_{t-1} + (1-\beta_2)\centerdot g_t^2<br>$$</p>
-<p><strong>AdaDelta&#x2F;RMSProp参数更新公式</strong></p>
-<p>$$<br>w_{t+1} &#x3D; w_t - \frac{\alpha \centerdot m_t}{\sqrt{\beta_2 \centerdot V_{t-1}+(1-\beta_2)g_t^2}}<br>$$<br>优点：</p>
+<script type="math/tex; mode=display">
+V\_t = \beta\_2 \centerdot V\_{t-1} + (1-\beta\_2)\centerdot g\_t^2</script><p><strong>AdaDelta/RMSProp参数更新公式</strong></p>
+<script type="math/tex; mode=display">
+w\_{t+1} = w\_t - \frac{\alpha \centerdot m\_t}{\sqrt{\beta\_2 \centerdot V\_{t-1}+(1-\beta\_2)g\_t^2}}</script><p>优点：</p>
 <p>避免了二阶动量持续累积，导致训练过程提前结束的问题。</p>
 <h3 id="2-6-Adam"><a href="#2-6-Adam" class="headerlink" title="2.6 Adam"></a>2.6 Adam</h3><p>SGD-M在SGD基础上增加了一阶动量，AdaGrad和AdaDelta在SGD基础上增加了二阶动量。把一阶动量和二阶动量都用起来，就是Adam————Adaptive + Momentum</p>
 <p>SGD的一阶动量：</p>
-<p>$$<br>m_t &#x3D; \beta_1 \centerdot m_{t-1} + (1-\beta_1)\centerdot g_t<br>$$</p>
-<p>加上AdaDelta的二阶动量：</p>
-<p>$$<br>V_t &#x3D; \beta_2 \centerdot V_{t-1} + (1-\beta_2)g_t^2<br>$$</p>
-<p><strong>Adam参数更新公式</strong>如下：<br>$$<br>w_{t+1} &#x3D; w_t - \frac{\alpha \centerdot m_t}{\sqrt{V_t}}<br>$$</p>
-<p>优化算法里最常见的两个超参数β1和β2就在这里，前者控制一阶动量，后者控制二阶动量。</p>
+<script type="math/tex; mode=display">
+m\_t = \beta\_1 \centerdot m\_{t-1} + (1-\beta\_1)\centerdot g\_t</script><p>加上AdaDelta的二阶动量：</p>
+<script type="math/tex; mode=display">
+V\_t = \beta\_2 \centerdot V\_{t-1} + (1-\beta\_2)g\_t^2</script><p><strong>Adam参数更新公式</strong>如下：</p>
+<script type="math/tex; mode=display">
+w\_{t+1} = w\_t - \frac{\alpha \centerdot m\_t}{\sqrt{V\_t}}</script><p>优化算法里最常见的两个超参数β1和β2就在这里，前者控制一阶动量，后者控制二阶动量。</p>
 <p>优点：</p>
 <p>（1）通过一阶动量和二阶动量，有效控制学习率步长和梯度方向，防止梯度的振荡和在鞍点的静止。</p>
 <p>缺点：</p>
 <p><strong>（1）可能不收敛：</strong></p>
 <p>二阶动量是固定时间窗口内的累积，随着时间窗口的变化，遇到的数据可能发生巨变，使得V_t可能会时大时小，不是单调变化。这就可能在训练后期引起学习率的震荡，导致模型无法收敛。</p>
 <p>修正的方法。由于Adam中的学习率主要是由二阶动量控制的，为了保证算法的收敛，可以对二阶动量的变化进行控制，避免上下波动。</p>
-<p>$$<br>V_t &#x3D; max(\beta_2 \times V_{t-1}+(1-\beta_2)g_t^2,V_{t-1})<br>$$</p>
-<p>通过这样修改，就保证了||V_t|| &gt;&#x3D; ||V_t-1||，从而使得学习率单调递减。</p>
-<p>**（2）可能会错过全局最优解 **</p>
+<script type="math/tex; mode=display">
+V\_t = max(\beta\_2 \times V\_{t-1}+(1-\beta\_2)g\_t^2,V\_{t-1})</script><p>通过这样修改，就保证了||V_t|| &gt;= ||V_t-1||，从而使得学习率单调递减。</p>
+<p><strong>（2）可能会错过全局最优解 </strong></p>
 <p>自适应学习率算法可能对前期出现的特征过拟合，后期才出现的特征很难纠正前期的拟合效果。后期Adam学习率太低，影响了有效的收敛。</p>
 <h3 id="2-7-Nadam"><a href="#2-7-Nadam" class="headerlink" title="2.7 Nadam"></a>2.7 Nadam</h3><p>它是在Adam的基础上，增加了带有Nesterov加速度梯度计算的思想</p>
-<p>Nesterov + Adam &#x3D; Nadam</p>
-<p>按照NAG的步骤：<br>$$<br>g_t &#x3D; \nabla f(w_t - \frat{\alpha m_{t-1}}{\sqrt{V_t}})<br>$$</p>
-<h2 id="3-优化算法的选择与使用策略"><a href="#3-优化算法的选择与使用策略" class="headerlink" title="3. 优化算法的选择与使用策略"></a>3. 优化算法的选择与使用策略</h2><p>优化算法的常用tricks</p>
+<p>Nesterov + Adam = Nadam</p>
+<p>按照NAG的步骤：</p>
+<script type="math/tex; mode=display">
+g\_t = \nabla f(w\_t - \frat{\alpha m\_{t-1}}{\sqrt{V\_t}})</script><h2 id="3-优化算法的选择与使用策略"><a href="#3-优化算法的选择与使用策略" class="headerlink" title="3. 优化算法的选择与使用策略"></a>3. 优化算法的选择与使用策略</h2><p>优化算法的常用tricks</p>
 <p>（1）首先，各大算法孰优孰劣并无定论。如果是刚入门，优先考虑SGD+Nesterov Momentum或者Adam。</p>
 <p>（2）选择你熟悉的算法——这样你可以更加熟练地利用你的经验进行调参。</p>
 <p>（3）充分了解你的数据——如果模型是非常稀疏的，那么优先考虑自适应学习率的算法。</p>
@@ -120,6 +140,21 @@
       <tags>
         <tag>Note</tag>
         <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>塞尔达：旷野之息实用的程错</title>
+    <url>/2023/04/08/%E5%A1%9E%E5%B0%94%E8%BE%BE%E5%AE%9E%E7%94%A8%E7%9A%84%E7%A8%8B%E9%94%99/</url>
+    <content><![CDATA[<h1 id="塞尔达：旷野之息实用的程错"><a href="#塞尔达：旷野之息实用的程错" class="headerlink" title="塞尔达：旷野之息实用的程错"></a>塞尔达：旷野之息实用的程错</h1><p>有空再写</p>
+<p><img src="https://s1.ax1x.com/2023/04/08/ppHP2lQ.md.jpg" alt=""><br><span id="more"></span></p>
+]]></content>
+      <categories>
+        <category>游戏</category>
+        <category>塞尔达传说</category>
+      </categories>
+      <tags>
+        <tag>游戏</tag>
+        <tag>塞尔达传说</tag>
       </tags>
   </entry>
   <entry>
@@ -154,8 +189,8 @@
 <p>②快捷键添加<br>直接在键盘上输入Ctrl+Shift+O，输入第一条内容后，按 回车 ，即可添加第二条内容。注意快捷键输入的是 字母O ，而不是 数字0。</p>
 <p>③选项卡添加<br>在菜单栏中选择 插入 选项卡，找到 有序列表 ，添加即可，或者在标题栏中，直接点击 添加有序列表的按钮。</p>
 <p>2.2 无序列表<br>无序列表，顾名思义，即输入的内容不按序号进行排列。有三种添加方式：①手动添加；②快捷键添加；③选项卡添加，下面分别对这三种方式进行介绍。</p>
-<p>①手动添加<br>在输入的内容前，添加-&#x2F;* + 空格 ，接着按 回车 ，即可添加下一条内容。</p>
-<p>注意：1）这里的-&#x2F;* 是指-或<em>；2）-&#x2F;</em> 的后边务必加 空格 ，否则添加列表无效。</p>
+<p>①手动添加<br>在输入的内容前，添加-/* + 空格 ，接着按 回车 ，即可添加下一条内容。</p>
+<p>注意：1）这里的-/<em> 是指-或</em>；2）-/* 的后边务必加 空格 ，否则添加列表无效。</p>
 <p>②快捷键添加<br>直接在键盘上输入Ctrl+U，输入第一条内容后，按 回车 ，即可添加第二条内容。</p>
 <p>③选项卡添加<br>在菜单栏中选择 插入 选项卡，找到 无序列表 ，添加即可，或者在标题栏中，直接点击 添加的无序列表按钮。</p>
 <h3 id="3-引用"><a href="#3-引用" class="headerlink" title="3.引用"></a>3.引用</h3><p>引用可以将一段文字进行单独的标识，撇如下面这个例子。</p>
@@ -187,17 +222,16 @@
 <li>选项卡设置: 找到 italic点击插入斜体结构.</li>
 </ol>
 <h3 id="6-代码"><a href="#6-代码" class="headerlink" title="6.代码"></a>6.代码</h3><p>6.1 代码行</p>
-<p>输入一行代码,在代码前后添加&#96;,同时要注意是在英文输入法中添加,输入快捷键ctrl+K也可以对其进行添加.下面举例:</p>
+<p>输入一行代码,在代码前后添加`,同时要注意是在英文输入法中添加,输入快捷键ctrl+K也可以对其进行添加.下面举例:</p>
 <p><code>printf(&#39;hello world&#39;);</code></p>
 <pre><code>hello world
-</code></pre>
-<p>6.2 代码块:</p>
+</code></pre><p>6.2 代码块:</p>
 <p>添加代码块网上给出了很多方法.有一种比较简单的方法.选中需要标记的代码段<br>利用以下语法：</p>
 <p>--- bash</p>
 <p>$ 代码内容</p>
 <p>---</p>
 <h3 id="7-转义字符"><a href="#7-转义字符" class="headerlink" title="7.转义字符"></a>7.转义字符</h3><p>这个和C语言的转义字符类似,在需要添加的特殊字符前添加\即可.</p>
-<h3 id="8-其他快捷键"><a href="#8-其他快捷键" class="headerlink" title="8.其他快捷键"></a>8.其他快捷键</h3><p>8.1添加时间戳<br>键盘输入ctrl+T,即可从系统中获取时间,例如:3&#x2F;30&#x2F;2023 8:57:50 PM </p>
+<h3 id="8-其他快捷键"><a href="#8-其他快捷键" class="headerlink" title="8.其他快捷键"></a>8.其他快捷键</h3><p>8.1添加时间戳<br>键盘输入ctrl+T,即可从系统中获取时间,例如:3/30/2023 8:57:50 PM </p>
 <p>8.2添加分割线<br>键盘输入ctrl+R,即可添加水平标尺.</p>
 <hr>
 ]]></content>
@@ -214,17 +248,13 @@
     <url>/2023/03/26/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><span id="more"></span>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a><br>comment: true</p>
 ]]></content>
   </entry>
