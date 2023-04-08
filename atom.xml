@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-03-30T13:23:00.467Z</updated>
+  <updated>2023-04-08T11:14:32.317Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,20 +17,65 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>由浅入深了解优化器(Optimizer)</title>
+    <link href="http://example.com/2023/04/08/%E4%BC%98%E5%8C%96%E5%99%A8/"/>
+    <id>http://example.com/2023/04/08/%E4%BC%98%E5%8C%96%E5%99%A8/</id>
+    <published>2023-04-08T11:14:31.000Z</published>
+    <updated>2023-04-08T11:14:32.317Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;由浅入深了解优化器-Optimizer&quot;&gt;&lt;a href=&quot;#由浅入深了解优化器-Optimizer&quot; class=&quot;headerlink&quot; title=&quot;由浅入深了解优化器(Optimizer)&quot;&gt;&lt;/a&gt;由浅入深了解优化器(Optimizer)&lt;/h1&gt;&lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;1.什么是优化器？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;2.有哪些优化器&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;3.优化算法的选择与使用策略&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;1-什么是优化器？&quot;&gt;&lt;a href=&quot;#1-什么是优化器？&quot; class=&quot;headerlink&quot; title=&quot;1.什么是优化器？&quot;&gt;&lt;/a&gt;1.什么是优化器？&lt;/h2&gt;&lt;h3 id=&quot;（1）解释&quot;&gt;&lt;a href=&quot;#（1）解释&quot; class=&quot;headerlink&quot; title=&quot;（1）解释&quot;&gt;&lt;/a&gt;（1）解释&lt;/h3&gt;&lt;p&gt;  优化器就是在深度学习反向传播过程中，指引损失函数（目标函数）的各个参数往正确的方向更新合适的大小，使得更新后的各个参数让损失函数值不断逼近全局最小。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="note" scheme="http://example.com/categories/note/"/>
+    
+    <category term="深度学习" scheme="http://example.com/categories/note/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="优化器" scheme="http://example.com/categories/note/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E4%BC%98%E5%8C%96%E5%99%A8/"/>
+    
+    
+    <category term="Note" scheme="http://example.com/tags/Note/"/>
+    
+    <category term="深度学习" scheme="http://example.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>MarkdownPad 使用教程</title>
     <link href="http://example.com/2023/03/30/MakedownPad%E4%BD%BF%E7%94%A8%E5%B8%AE%E5%8A%A9/"/>
     <id>http://example.com/2023/03/30/MakedownPad%E4%BD%BF%E7%94%A8%E5%B8%AE%E5%8A%A9/</id>
     <published>2023-03-30T13:01:34.000Z</published>
-    <updated>2023-03-30T13:23:00.467Z</updated>
+    <updated>2023-04-08T07:51:15.974Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+    <summary type="html">&lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;标题&lt;/li&gt;
+&lt;li&gt;列表&lt;/li&gt;
+&lt;li&gt;引用&lt;/li&gt;
+&lt;li&gt;图片和超链接&lt;/li&gt;
+&lt;li&gt;粗体与斜体&lt;/li&gt;
+&lt;li&gt;代码框&lt;/li&gt;
+&lt;li&gt;转义字符&lt;/li&gt;
+&lt;li&gt;其他快捷键&lt;/li&gt;
+&lt;li&gt;最后&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;1-标题&quot;&gt;&lt;a href=&quot;#1-标题&quot; class=&quot;headerlink&quot; title=&quot;1.标题&quot;&gt;&lt;/a&gt;1.标题&lt;/h3&gt;&lt;p&gt;标题的设置很简单，有三种添加方式：①手动添加；②快捷键添加；③选项卡添加，下面分别对这三种方式进行介绍。&lt;/p&gt;
+&lt;p&gt;Ⅰ. 手动添加&lt;/p&gt;
+&lt;p&gt;一级标题对应的是#一级标题#，二级标题对应##二级标题##，以此类推。&lt;/p&gt;
+&lt;p&gt;Ⅱ. 快捷键添加&lt;/p&gt;
+&lt;p&gt;直接在键盘上输入ctrl+num就能得到对应标题的级数&lt;/p&gt;
+&lt;p&gt;Ⅲ. 选项卡设置&lt;/p&gt;
+&lt;p&gt;在菜单栏中选择插入选项卡，找到需要插入的&lt;strong&gt;标题&lt;/strong&gt;,添加即可。&lt;/p&gt;</summary>
     
     
     
@@ -38,6 +83,8 @@
     
     
     <category term="MarkdownPad" scheme="http://example.com/tags/MarkdownPad/"/>
+    
+    <category term="Note" scheme="http://example.com/tags/Note/"/>
     
   </entry>
   
