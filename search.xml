@@ -53,11 +53,11 @@
 <p>步骤3，4对于各个算法基本上都是一致的，主要差别就体现在步骤1，2上。</p>
 <h2 id="2-有哪些优化器？"><a href="#2-有哪些优化器？" class="headerlink" title="2.有哪些优化器？"></a>2.有哪些优化器？</h2><h3 id="2-1随机梯度下降法-Stochastic-Gradient-Descent-SGD"><a href="#2-1随机梯度下降法-Stochastic-Gradient-Descent-SGD" class="headerlink" title="2.1随机梯度下降法(Stochastic Gradient Descent,SGD)"></a>2.1随机梯度下降法(Stochastic Gradient Descent,SGD)</h3><p>随机梯度下降法每次从训练集中随机选择一个样本来进行学习，SGD没有动量的概念，因此：</p>
 <script type="math/tex; mode=display">
-m\_t = g\_t; V\_t = I^2</script><p>代入步骤3，可以得到下降梯度：</p>
+m_t = g_t; V_t = I^2</script><p>代入步骤3，可以得到下降梯度：</p>
 <script type="math/tex; mode=display">
-\eta\_t = \alpha \times g\_t</script><p><strong>SGD参数更新公式</strong>如下，其中α是学习率，g_t是当前参数梯度</p>
+\eta_t = \alpha \times g_t</script><p><strong>SGD参数更新公式</strong>如下，其中α是学习率，g_t是当前参数梯度</p>
 <script type="math/tex; mode=display">
-w\_{t+1} = w\_t - \eta\_t = w\_t - \alpha \times g\_t</script><p>优点：</p>
+w_{t+1} = w_t - \eta_t = w_t - \alpha \times g_t</script><p>优点：</p>
 <p>（1）每次只用一个样本更新模型参数，训练速度快<br>（2）随机梯度下降所带来的波动有利于优化的方向从当前的局部极小值点跳到另一个更好的局部极小值点，这样对于非凸函数，最终收敛于一个较好的局部极值点，甚至全局极值点。</p>
 <p>缺点：</p>
 <p>（1）当遇到局部最优点或者鞍点的时候，梯度为0，无法继续更新参数。这时候它天真的以为找到了最优解，其实不然。</p>
@@ -65,28 +65,28 @@ w\_{t+1} = w\_t - \eta\_t = w\_t - \alpha \times g\_t</script><p>优点：</p>
 <p>（2）沿着陡峭方向振荡，而沿着平缓维度进展缓慢，难以迅速收敛。</p>
 <h3 id="SGD-with-Momentum"><a href="#SGD-with-Momentum" class="headerlink" title="SGD with Momentum"></a>SGD with Momentum</h3><p>为了抑制SGD的振荡，SGDM认为梯度下降过程可以加入惯性。下坡的时候如果发现是陡坡，那就利用惯性跑的快一点，SGDM全称是SGD with momentum，它的重点就在于后面的momentum，因为它在SGD的基础上增加了一阶动量的选项。</p>
 <script type="math/tex; mode=display">
-m\_t = \beta\_1 \times m\_{t-1} + (1-\beta\_1)\times g\_t</script><p><strong>SGD-M参数更新公式</strong>如下，其中α是学习率，g_t是当前参数的梯度：</p>
+m_t = \beta_1 \times m_{t-1} + (1-\beta_1)\times g_t</script><p><strong>SGD-M参数更新公式</strong>如下，其中α是学习率，g_t是当前参数的梯度：</p>
 <script type="math/tex; mode=display">
-w\_{t+1} = w\_t - \alpha \times m\_t = w\_t - \alpha \times (\beta\_1 \times m\_{t-1} + (1-\beta\_1)\times g\_t)</script><p>一阶动量是各个时刻梯度方向的指数移动平均值，也就是说，t时刻下降的方向，不仅由当前点的梯度方向决定，而且由此前累积的下降方向决定。β_1的经验值为0.9，这就意味着下降方向主要是此前积累的下降方向。其实我们举个现实的例子就能知道，引用此前的动量这个想法是一个很棒的方法。比如我们在高速公路上漂移转弯，我们一般都会踩刹车来漂移，主要依靠汽车此前运动的累积动量运动。因为急转弯可是要出大事的（藤原拓海开的AE86除外）</p>
+w_{t+1} = w_t - \alpha \times m_t = w_t - \alpha \times (\beta_1 \times m_{t-1} + (1-\beta_1)\times g_t)</script><p>一阶动量是各个时刻梯度方向的指数移动平均值，也就是说，t时刻下降的方向，不仅由当前点的梯度方向决定，而且由此前累积的下降方向决定。β_1的经验值为0.9，这就意味着下降方向主要是此前积累的下降方向。其实我们举个现实的例子就能知道，引用此前的动量这个想法是一个很棒的方法。比如我们在高速公路上漂移转弯，我们一般都会踩刹车来漂移，主要依靠汽车此前运动的累积动量运动。因为急转弯可是要出大事的（藤原拓海开的AE86除外）</p>
 <p>特点：</p>
 <p>因为加入了动量的因素，SGD-M缓解了SGD在局部最优点梯度为0，无法持续更新的问题和振荡幅度过大的问题，但是并没有完全解决，当局部沟壑比较深的时候，动量加持用完了，依然会困在局部最优里来回振荡。</p>
 <p><img src="https://s1.ax1x.com/2023/04/08/ppHPxTx.png" alt=""></p>
 <h3 id="2-3-SGD-with-Nesterov-Acceleration"><a href="#2-3-SGD-with-Nesterov-Acceleration" class="headerlink" title="2.3 SGD with Nesterov Acceleration"></a>2.3 SGD with Nesterov Acceleration</h3><p>SGD还有一个问题是困在局部最优的沟壑里振荡。想象你走到一个盆地里，四周都是略高的小山，你觉得没有下坡的方向，那就只能呆在这里了。可是如果你爬上高低，就会发现外面的世界很广阔。因此，我们不能停留在当前位置去观察未来的方向，而要向前一步、多看一步。</p>
 <p>NAG全称为Nesterov Acceleration Gradient，是在SGD、SGD-M上的改进，改进点在于步骤1，我们知道在时刻t的主要方向是由累积动量决定的，自己的梯度方向说了也不算，那与其看当前的梯度方向，不如先看看如果跟着累积动量走了一步，到时候看一步走一步。因此，NAG在步骤1上，不计当前位置的梯度方向，而是计算如果按照累积动量走了一步，那个时候的下降方向：</p>
 <script type="math/tex; mode=display">
-g\_t = \nabla f(w\_t - \alpha \centerdot m\_{t-1}/\sqrt{V\_{t-1}})</script><p><strong>NAG参数更新公式</strong>如下，其中α是学习率，g_t是当前参数的梯度</p>
+g_t = \nabla f(w_t - \alpha \centerdot m_{t-1}/\sqrt{V_{t-1}})</script><p><strong>NAG参数更新公式</strong>如下，其中α是学习率，g_t是当前参数的梯度</p>
 <script type="math/tex; mode=display">
-w\_{t+1}=w\_t - \alpha \centerdot g\_t = w\_t - \alpha \times (\nabla f(w\_t - \alpha \centerdot m\_{t-1}/\sqrt{V\_{t-1}}))</script><p>然后用下一个点的梯度方向，与历史累积动量相结合，计算步骤2中当前时刻的累积动量。</p>
+w_{t+1}=w_t - \alpha \centerdot g_t = w_t - \alpha \times (\nabla f(w_t - \alpha \centerdot m_{t-1}/\sqrt{V_{t-1}}))</script><p>然后用下一个点的梯度方向，与历史累积动量相结合，计算步骤2中当前时刻的累积动量。</p>
 <p>特点：有利于跳出当前局部最优沟壑，寻找新的最优值，但是收敛速度慢。</p>
 <h3 id="2-4-AdaGrad（自适应学习率算法）"><a href="#2-4-AdaGrad（自适应学习率算法）" class="headerlink" title="2.4 AdaGrad（自适应学习率算法）"></a>2.4 AdaGrad（自适应学习率算法）</h3><p>SGD系列的都没有用到二阶动量。二阶动量的出现，才意味着往“自适应学习率”优化算法的到来。SGD及其变种以同样的学习率更新每个参数，但是对于深度神经网络往往包含大量的参数，这些参数并不是总会用得到的。对于经常更新的参数，我们已经积累了大量关于它的知识，不希望被单个样本影响太大，希望学习速率能慢一点；对于偶尔更新的参数，我们了解的信息太少了，希望能从每个偶然出现的样本身上多学一些，即学习速率大一些。</p>
 <p>怎么用去度量历史更新频率？</p>
 <p>那就是二阶动量————该维度上，记录到目前为止所有梯度值的平方和：</p>
 <script type="math/tex; mode=display">
-V\_t = \sum\_{\tau = 1}^t {g\_{\tau}^2}</script><p>我们再回顾以下步骤三的下降梯度：</p>
+V_t = \sum_{\tau = 1}^t {g_{\tau}^2}</script><p>我们再回顾以下步骤三的下降梯度：</p>
 <script type="math/tex; mode=display">
-\eta = \alpha \centerdot m\_t/\sqrt{V\_t}</script><p><strong>AdaGrad参数更新公式</strong>如下，其中α是学习率，g_t是当前参数的梯度：</p>
+\eta = \alpha \centerdot m_t/\sqrt{V_t}</script><p><strong>AdaGrad参数更新公式</strong>如下，其中α是学习率，g_t是当前参数的梯度：</p>
 <script type="math/tex; mode=display">
-w\_{t+1} = w\_t - \frac{\alpha \centerdot m\_t}{\sqrt{\sum\_{\tau = 1}^t g\_{\tau}^2}}</script><p>可以看出，此时实质上的学习率由α变成了α/sqrt(V_t).一般为了避免分母为0，会在分母上加一个小的平滑项。因此sqrt(V_t)是恒大于0的，而且参数更新的越频繁，二阶动量越大，学习率越小。</p>
+w_{t+1} = w_t - \frac{\alpha \centerdot m_t}{\sqrt{\sum_{\tau = 1}^t g_{\tau}^2}}</script><p>可以看出，此时实质上的学习率由α变成了α/sqrt(V_t).一般为了避免分母为0，会在分母上加一个小的平滑项。因此sqrt(V_t)是恒大于0的，而且参数更新的越频繁，二阶动量越大，学习率越小。</p>
 <p>优点：</p>
 <p>（1）在稀疏数据场景下表现得非常好</p>
 <p> (2) 此前的SGD及其变体的优化器主要聚焦在优化梯度前进的方向上，而AdaGrad首次使用二阶动量来关注学习率（步长），开启了自适应学习率算法的里程。</p>
@@ -95,18 +95,18 @@ w\_{t+1} = w\_t - \frac{\alpha \centerdot m\_t}{\sqrt{\sum\_{\tau = 1}^t g\_{\ta
 <h3 id="2-5-AdaDelta-RMSProp"><a href="#2-5-AdaDelta-RMSProp" class="headerlink" title="2.5 AdaDelta/RMSProp"></a>2.5 AdaDelta/RMSProp</h3><p>由于AdaGrad单调递减的学习率变化过于激进，考虑一个改变二阶动量的计算方法的策略：不累计全部历史梯度，而只关注过去一段时间窗口的下降速度。这就是AdaDe名称Delta的来历。</p>
 <p>修改的思路很简单，前面讲到，指数移动平均值大约就是过去一段时间的平均值，因此我们用这一方法来计算二阶累积动量：</p>
 <script type="math/tex; mode=display">
-V\_t = \beta\_2 \centerdot V\_{t-1} + (1-\beta\_2)\centerdot g\_t^2</script><p><strong>AdaDelta/RMSProp参数更新公式</strong></p>
+V_t = \beta_2 \centerdot V_{t-1} + (1-\beta_2)\centerdot g_t^2</script><p><strong>AdaDelta/RMSProp参数更新公式</strong></p>
 <script type="math/tex; mode=display">
-w\_{t+1} = w\_t - \frac{\alpha \centerdot m\_t}{\sqrt{\beta\_2 \centerdot V\_{t-1}+(1-\beta\_2)g\_t^2}}</script><p>优点：</p>
+w_{t+1} = w_t - \frac{\alpha \centerdot m_t}{\sqrt{\beta_2 \centerdot V_{t-1}+(1-\beta_2)g_t^2}}</script><p>优点：</p>
 <p>避免了二阶动量持续累积，导致训练过程提前结束的问题。</p>
 <h3 id="2-6-Adam"><a href="#2-6-Adam" class="headerlink" title="2.6 Adam"></a>2.6 Adam</h3><p>SGD-M在SGD基础上增加了一阶动量，AdaGrad和AdaDelta在SGD基础上增加了二阶动量。把一阶动量和二阶动量都用起来，就是Adam————Adaptive + Momentum</p>
 <p>SGD的一阶动量：</p>
 <script type="math/tex; mode=display">
-m\_t = \beta\_1 \centerdot m\_{t-1} + (1-\beta\_1)\centerdot g\_t</script><p>加上AdaDelta的二阶动量：</p>
+m_t = \beta_1 \centerdot m_{t-1} + (1-\beta_1)\centerdot g_t</script><p>加上AdaDelta的二阶动量：</p>
 <script type="math/tex; mode=display">
-V\_t = \beta\_2 \centerdot V\_{t-1} + (1-\beta\_2)g\_t^2</script><p><strong>Adam参数更新公式</strong>如下：</p>
+V\_t = \beta_2 \centerdot V_{t-1} + (1-\beta_2)g_t^2</script><p><strong>Adam参数更新公式</strong>如下：</p>
 <script type="math/tex; mode=display">
-w\_{t+1} = w\_t - \frac{\alpha \centerdot m\_t}{\sqrt{V\_t}}</script><p>优化算法里最常见的两个超参数β1和β2就在这里，前者控制一阶动量，后者控制二阶动量。</p>
+w_{t+1} = w_t - \frac{\alpha \centerdot m_t}{\sqrt{V_t}}</script><p>优化算法里最常见的两个超参数β1和β2就在这里，前者控制一阶动量，后者控制二阶动量。</p>
 <p>优点：</p>
 <p>（1）通过一阶动量和二阶动量，有效控制学习率步长和梯度方向，防止梯度的振荡和在鞍点的静止。</p>
 <p>缺点：</p>
@@ -114,14 +114,14 @@ w\_{t+1} = w\_t - \frac{\alpha \centerdot m\_t}{\sqrt{V\_t}}</script><p>优化�
 <p>二阶动量是固定时间窗口内的累积，随着时间窗口的变化，遇到的数据可能发生巨变，使得V_t可能会时大时小，不是单调变化。这就可能在训练后期引起学习率的震荡，导致模型无法收敛。</p>
 <p>修正的方法。由于Adam中的学习率主要是由二阶动量控制的，为了保证算法的收敛，可以对二阶动量的变化进行控制，避免上下波动。</p>
 <script type="math/tex; mode=display">
-V\_t = max(\beta\_2 \times V\_{t-1}+(1-\beta\_2)g\_t^2,V\_{t-1})</script><p>通过这样修改，就保证了||V_t|| &gt;= ||V_t-1||，从而使得学习率单调递减。</p>
+V_t = max(\beta_2 \times V_{t-1}+(1-\beta_2)g_t^2,V_{t-1})</script><p>通过这样修改，就保证了||V_t|| &gt;= ||V_t-1||，从而使得学习率单调递减。</p>
 <p><strong>（2）可能会错过全局最优解 </strong></p>
 <p>自适应学习率算法可能对前期出现的特征过拟合，后期才出现的特征很难纠正前期的拟合效果。后期Adam学习率太低，影响了有效的收敛。</p>
 <h3 id="2-7-Nadam"><a href="#2-7-Nadam" class="headerlink" title="2.7 Nadam"></a>2.7 Nadam</h3><p>它是在Adam的基础上，增加了带有Nesterov加速度梯度计算的思想</p>
 <p>Nesterov + Adam = Nadam</p>
 <p>按照NAG的步骤：</p>
 <script type="math/tex; mode=display">
-g\_t = \nabla f(w\_t - \frat{\alpha m\_{t-1}}{\sqrt{V\_t}})</script><h2 id="3-优化算法的选择与使用策略"><a href="#3-优化算法的选择与使用策略" class="headerlink" title="3. 优化算法的选择与使用策略"></a>3. 优化算法的选择与使用策略</h2><p>优化算法的常用tricks</p>
+g_t = \nabla f(w_t - \frac{\alpha m_{t-1}}{\sqrt{V_t}})</script><h2 id="3-优化算法的选择与使用策略"><a href="#3-优化算法的选择与使用策略" class="headerlink" title="3. 优化算法的选择与使用策略"></a>3. 优化算法的选择与使用策略</h2><p>优化算法的常用tricks</p>
 <p>（1）首先，各大算法孰优孰劣并无定论。如果是刚入门，优先考虑SGD+Nesterov Momentum或者Adam。</p>
 <p>（2）选择你熟悉的算法——这样你可以更加熟练地利用你的经验进行调参。</p>
 <p>（3）充分了解你的数据——如果模型是非常稀疏的，那么优先考虑自适应学习率的算法。</p>
