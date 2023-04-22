@@ -95,6 +95,26 @@
   </entry>
   
   <entry>
+    <title>开源的83键键盘</title>
+    <link href="http://example.com/2023/04/08/%E5%BC%80%E6%BA%90%E7%9A%8483%E9%94%AE%E9%94%AE%E7%9B%98/"/>
+    <id>http://example.com/2023/04/08/%E5%BC%80%E6%BA%90%E7%9A%8483%E9%94%AE%E9%94%AE%E7%9B%98/</id>
+    <published>2023-04-08T11:14:31.000Z</published>
+    <updated>2023-04-22T13:23:26.538Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;大二时暑假无聊做的开源键盘（基于Atmega32u4主控）&quot;&gt;&lt;a href=&quot;#大二时暑假无聊做的开源键盘（基于Atmega32u4主控）&quot; class=&quot;headerlink&quot; title=&quot;大二时暑假无聊做的开源键盘（基于Atmega32u4主控）&quot;&gt;&lt;/a&gt;大二时暑假无聊做的开源键盘（基于Atmega32u4主控）&lt;/h1&gt;&lt;p&gt;开源文件包含定位板的cad图纸、作者本人画的两个3d建模外壳、固件程序、pcb板等文件&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://oshwhub.com/fhgg888/zi-zhi-83jian-jian-pan&quot;&gt;开源地址&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;https://image.lceda.cn/pullimage/M3fr4lfKYoaYvZYr7DzJWpoTpuUv8MvrxsWhlvuG.jpeg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="键盘" scheme="http://example.com/categories/%E9%94%AE%E7%9B%98/"/>
+    
+    
+    <category term="开源" scheme="http://example.com/tags/%E5%BC%80%E6%BA%90/"/>
+    
+  </entry>
+  
+  <entry>
     <title>MarkdownPad 使用教程</title>
     <link href="http://example.com/2023/03/30/MakedownPad%E4%BD%BF%E7%94%A8%E5%B8%AE%E5%8A%A9/"/>
     <id>http://example.com/2023/03/30/MakedownPad%E4%BD%BF%E7%94%A8%E5%B8%AE%E5%8A%A9/</id>
@@ -129,24 +149,6 @@
     <category term="MarkdownPad" scheme="http://example.com/tags/MarkdownPad/"/>
     
     <category term="Note" scheme="http://example.com/tags/Note/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://example.com/2023/03/26/hello-world/"/>
-    <id>http://example.com/2023/03/26/hello-world/</id>
-    <published>2023-03-26T11:13:00.736Z</published>
-    <updated>2023-03-30T11:32:19.111Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&amp;quot;My New Post&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Run-server&quot;&gt;&lt;a href=&quot;#Run-server&quot; class=&quot;headerlink&quot; title=&quot;Run server&quot;&gt;&lt;/a&gt;Run server&lt;/h3&gt;</summary>
-    
-    
-    
     
   </entry>
   
